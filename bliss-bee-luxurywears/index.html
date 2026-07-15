@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bliss Bee LuxuryWears &mdash; Uyo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Jost:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/tailwind.css">
+</head>
+<body class="bg-bone text-ink font-sans">
+
+<div class="bg-ink text-gold overflow-hidden whitespace-nowrap border-b border-gold/30 h-[38px] flex items-center">
+  <div class="marquee-track" id="marqueeTrack"></div>
+</div>
+
+<header class="sticky top-0 z-50 bg-bone/90 backdrop-blur-md border-b border-black/10">
+  <div class="max-w-[1240px] mx-auto px-7 flex items-center justify-between gap-5 py-3.5">
+    <div class="flex items-center gap-3">
+      <img src="assets/logo.png" alt="Bliss Bee LuxuryWears logo" class="h-11 w-11 object-contain">
+      <div class="flex flex-col leading-none">
+        <b class="font-serif font-bold text-xl tracking-wide">Bliss Bee</b>
+        <small class="text-[9px] tracking-[3px] uppercase text-gold mt-1">Luxury Wears</small>
+      </div>
+    </div>
+    <ul class="hidden md:flex gap-8 text-[13px] tracking-[1.5px] uppercase list-none">
+      <li><a href="#shop" class="nav-underline">Shop</a></li>
+      <li><a href="#about" class="nav-underline">About</a></li>
+      <li><a href="#testimonials" class="nav-underline">Reviews</a></li>
+      <li><a href="#contact" class="nav-underline">Contact</a></li>
+    </ul>
+    <div class="flex items-center gap-3.5">
+      <button id="searchToggle" aria-label="Search" class="border border-black/15 hover:border-gold hover:text-gold w-9 h-9 rounded-full flex items-center justify-center transition-all">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+      </button>
+      <button id="cartOpenBtn" class="relative flex items-center gap-2 bg-ink hover:bg-[#2b2823] text-bone border-none px-4.5 py-2.5 rounded-sm text-[12px] tracking-[2px] uppercase transition-colors">
+        Cart <span id="cartCount" class="bg-gold text-ink font-bold rounded-full w-[18px] h-[18px] text-[10.5px] flex items-center justify-center">0</span>
+      </button>
+      <button id="menuToggle" aria-label="Open menu" aria-expanded="false" class="md:hidden w-9 h-9 flex flex-col items-center justify-center gap-[5px] border border-black/15 rounded-full">
+        <span id="menuBar1" class="block w-4 h-[1.5px] bg-ink transition-transform duration-200"></span>
+        <span id="menuBar2" class="block w-4 h-[1.5px] bg-ink transition-opacity duration-200"></span>
+        <span id="menuBar3" class="block w-4 h-[1.5px] bg-ink transition-transform duration-200"></span>
+      </button>
+    </div>
+  </div>
+  <div id="searchBar" class="max-h-0 overflow-hidden transition-all duration-300 bg-ink">
+    <div class="max-w-[1240px] mx-auto px-7 flex items-center gap-3 py-3.5">
+      <input type="text" id="searchInput" placeholder="Search hoodies, denim, dresses..." class="flex-1 bg-transparent border-0 border-b border-bone/30 focus:border-gold text-bone font-serif italic text-xl py-1.5 placeholder:text-bone/40">
+      <button id="searchClose" class="text-gold text-[13px] tracking-[1.5px] uppercase">Close</button>
+    </div>
+  </div>
+  <div id="mobileMenu" class="md:hidden max-h-0 overflow-hidden transition-all duration-300 bg-ink border-t border-bone/10">
+    <ul class="flex flex-col text-[13px] tracking-[1.5px] uppercase list-none px-7 py-2">
+      <li class="border-b border-bone/10"><a href="#shop" class="block py-4 text-bone hover:text-gold">Shop</a></li>
+      <li class="border-b border-bone/10"><a href="#about" class="block py-4 text-bone hover:text-gold">About</a></li>
+      <li class="border-b border-bone/10"><a href="#testimonials" class="block py-4 text-bone hover:text-gold">Reviews</a></li>
+      <li><a href="#contact" class="block py-4 text-bone hover:text-gold">Contact</a></li>
+    </ul>
+  </div>
+</header>
+
+<section class="relative text-bone pt-32 md:pt-[150px] pb-24 md:pb-28 overflow-hidden text-center bg-ink">
+  <div class="absolute inset-0 bg-cover bg-[center_30%] opacity-55 saturate-[0.9]" style="background-image:url('assets/brand/hero-bg.jpg');"></div>
+  <div class="absolute inset-0" style="background:linear-gradient(180deg, rgba(14,13,12,0.55) 0%, rgba(14,13,12,0.78) 55%, rgba(14,13,12,0.96) 100%), radial-gradient(circle at 50% 0%, rgba(199,154,62,0.16), transparent 55%);"></div>
+  <div class="relative max-w-[1240px] mx-auto px-7">
+    <div class="inline-flex items-center gap-2.5 text-[11px] tracking-[5px] uppercase text-gold mb-5">
+      <span class="w-6 h-px bg-gold/60"></span>UYO &middot; NIGERIA<span class="w-6 h-px bg-gold/60"></span>
+    </div>
+    <h1 class="font-serif italic font-semibold text-[44px] md:text-[92px] leading-[1.02] mb-5">
+      Wear the<br><span class="not-italic font-bold text-gold block">Sting of Luxury</span>
+    </h1>
+    <p class="max-w-[500px] mx-auto mb-10 text-bone/75 text-base leading-relaxed">Curated streetwear and boutique pieces, handpicked in Uyo. Hoodies, denim, jerseys and statement pieces &mdash; ordered straight to WhatsApp.</p>
+    <div class="flex gap-4 flex-wrap justify-center mb-16">
+      <a href="#shop" class="inline-flex items-center gap-2.5 px-8 py-4 text-[12.5px] tracking-[2.5px] uppercase rounded-sm bg-gold text-ink font-semibold hover:bg-goldbright hover:-translate-y-0.5 transition-all shadow-none hover:shadow-[0_12px_30px_rgba(199,154,62,0.35)]">Shop the Collection</a>
+      <a href="#contact" class="inline-flex items-center gap-2.5 px-8 py-4 text-[12.5px] tracking-[2.5px] uppercase rounded-sm border border-bone/40 text-bone hover:border-gold hover:text-gold transition-all">Visit the Store</a>
+    </div>
+    <div class="flex justify-center flex-wrap gap-0 max-w-[640px] mx-auto border-t border-bone/15 pt-8">
+      <div class="flex-1 min-w-[140px] px-4"><b id="statProductsHero" class="block font-serif text-[32px] text-gold">0</b><span class="text-[10.5px] tracking-[2px] uppercase text-bone/60">Pieces Live</span></div>
+      <div class="flex-1 min-w-[140px] px-4"><b class="block font-serif text-[32px] text-gold">100%</b><span class="text-[10.5px] tracking-[2px] uppercase text-bone/60">Verified Orders</span></div>
+      <div class="flex-1 min-w-[140px] px-4"><b class="block font-serif text-[32px] text-gold">Uyo</b><span class="text-[10.5px] tracking-[2px] uppercase text-bone/60">Based &amp; Local</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="bg-bone border-b border-black/10 py-11">
+  <div class="max-w-[1240px] mx-auto px-7 grid grid-cols-2 md:grid-cols-4 gap-7">
+    <div class="flex items-center gap-3.5">
+      <svg class="text-gold w-7 h-7 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2 3 6v6c0 5 4 8 9 10 5-2 9-5 9-10V6z"/><path d="m9 12 2 2 4-4"/></svg>
+      <div><b class="block text-[13.5px]">Verified Quality</b><span class="text-xs text-[#8a8477]">Every piece checked before it ships</span></div>
+    </div>
+    <div class="flex items-center gap-3.5">
+      <svg class="text-gold w-7 h-7 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 11.5a8.5 8.5 0 0 1-12.4 7.5L3 20l1.1-5.5A8.5 8.5 0 1 1 21 11.5z"/></svg>
+      <div><b class="block text-[13.5px]">Order on WhatsApp</b><span class="text-xs text-[#8a8477]">Fast replies, real conversations</span></div>
+    </div>
+    <div class="flex items-center gap-3.5">
+      <svg class="text-gold w-7 h-7 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="6" width="18" height="13" rx="2"/><path d="M3 10h18M7 15h4"/></svg>
+      <div><b class="block text-[13.5px]">Secure Payments</b><span class="text-xs text-[#8a8477]">Moniepoint transfer, confirmed directly</span></div>
+    </div>
+    <div class="flex items-center gap-3.5">
+      <svg class="text-gold w-7 h-7 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>
+      <div><b class="block text-[13.5px]">Based in Uyo</b><span class="text-xs text-[#8a8477]">88 Ekpri Nsukara Road</span></div>
+    </div>
+  </div>
+</section>
+
+<div class="bg-bone border-b border-black/10 sticky top-[65px] z-40">
+  <div class="max-w-[1240px] mx-auto px-7">
+    <div class="cat-scroll flex gap-2.5 overflow-x-auto py-4" id="catScroll"></div>
+  </div>
+</div>
+
+<section class="py-16 md:py-20" id="shop">
+  <div class="max-w-[1240px] mx-auto px-7">
+    <div class="reveal flex items-end justify-between flex-wrap gap-3.5 mb-9">
+      <h2 id="shopTitle" class="font-serif italic font-semibold text-[28px] md:text-[42px]">All Pieces</h2>
+      <span id="shopCount" class="text-xs tracking-[2px] uppercase text-[#8a8477]">0 items</span>
+    </div>
+    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6" id="productGrid"></div>
+    <div class="text-center mt-11 hidden" id="loadMoreWrap">
+      <button id="loadMoreBtn" class="inline-flex items-center gap-2.5 px-8 py-4 text-[12.5px] tracking-[2.5px] uppercase rounded-sm bg-gold text-ink font-semibold hover:bg-goldbright transition-all">Show More</button>
+    </div>
+  </div>
+</section>
+
+<section class="py-16 md:py-20 bg-bonedim" id="testimonials">
+  <div class="max-w-[1240px] mx-auto px-7">
+    <div class="reveal flex items-end justify-between flex-wrap gap-3.5 mb-9">
+      <h2 class="font-serif italic font-semibold text-[28px] md:text-[42px]">What Customers Say</h2>
+      <span class="text-xs tracking-[2px] uppercase text-[#8a8477]">Real orders, real fits</span>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6" id="testGrid"></div>
+  </div>
+</section>
+
+<section class="bg-charcoal text-bone py-20 md:py-24" id="about">
+  <div class="max-w-[1240px] mx-auto px-7 grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+    <div class="reveal relative max-w-[320px] md:max-w-none mx-auto">
+      <img class="w-full aspect-[4/5] object-cover border border-gold/30 shadow-lg2" src="assets/brand/ceo.jpg" alt="Founder of Bliss Bee LuxuryWears">
+      <div class="absolute -bottom-5 -left-5 bg-gold text-ink px-5 py-4 font-serif shadow-card">
+        <b class="block text-[19px]">Blessing Etim</b>
+        <span class="text-[10px] tracking-[2px] uppercase font-sans font-semibold">Founder &amp; CEO</span>
+      </div>
+    </div>
+    <div class="reveal">
+      <span class="block text-[11px] tracking-[4px] uppercase text-gold mb-3.5">Meet the Founder</span>
+      <h3 class="font-serif italic font-semibold text-[36px] mb-2">From Uyo, for the bold.</h3>
+      <p class="text-bone/70 leading-[1.85] text-[15px] mb-4">Bliss Bee LuxuryWears started as a passion for pieces that don't blend in &mdash; premium hoodies, denim and statement streetwear, sourced and styled for people who want their fit to say something.</p>
+      <div class="border-l-2 border-gold pl-5 my-6 font-serif italic text-[19px] leading-relaxed">"Every bag we hand over carries the same promise &mdash; quality you can feel, and style that speaks before you do."</div>
+      <p class="text-bone/70 leading-[1.85] text-[15px] mb-4">Every order is confirmed and handled personally, so you always know exactly what you're getting before you pay.</p>
+      <div class="flex gap-10 mt-7 flex-wrap">
+        <div><b id="statProducts" class="block font-serif text-[30px] text-gold">0</b><span class="text-[11px] tracking-[2px] uppercase text-[#a49d8c]">Pieces Live</span></div>
+        <div><b class="block font-serif text-[30px] text-gold">100%</b><span class="text-[11px] tracking-[2px] uppercase text-[#a49d8c]">Verified Orders</span></div>
+        <div><b class="block font-serif text-[30px] text-gold">Uyo</b><span class="text-[11px] tracking-[2px] uppercase text-[#a49d8c]">Based &amp; Local</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="bg-gold text-ink py-14 text-center">
+  <div class="max-w-[1240px] mx-auto px-7">
+    <h3 class="font-serif italic font-semibold text-[30px] mb-2.5">Get first access to new drops</h3>
+    <p class="text-sm mb-6 opacity-85">Message us on WhatsApp to join the Bliss Bee community &mdash; new arrivals, restocks and offers, first.</p>
+    <a id="ctaWhatsapp" href="#" target="_blank" rel="noopener" class="inline-flex items-center gap-2.5 px-8 py-4 text-[12.5px] tracking-[2.5px] uppercase rounded-sm bg-ink text-gold font-semibold hover:bg-[#2b2823] transition-all">Join on WhatsApp</a>
+  </div>
+</section>
+
+<footer class="bg-ink text-bone pt-16 pb-8" id="contact">
+  <div class="max-w-[1240px] mx-auto px-7">
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-10 pb-11 border-b border-bone/10">
+      <div class="md:col-span-1">
+        <b class="font-serif italic text-2xl">Bliss Bee LuxuryWears</b>
+        <p class="text-bone/60 text-[13.5px] leading-relaxed mt-3.5 max-w-[280px]">Boutique streetwear &amp; luxury casual pieces, based in Uyo, Nigeria. DM or WhatsApp us to order &mdash; we reply fast.</p>
+        <div class="flex gap-2.5 mt-4.5">
+          <a href="https://instagram.com/blissbeeventures" target="_blank" rel="noopener" aria-label="Instagram" class="w-9 h-9 border border-bone/20 hover:border-gold hover:text-gold rounded-full flex items-center justify-center transition-all">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg>
+          </a>
+          <a id="footWhatsappIcon" href="#" target="_blank" rel="noopener" aria-label="WhatsApp" class="w-9 h-9 border border-bone/20 hover:border-gold hover:text-gold rounded-full flex items-center justify-center transition-all">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M21 11.5a8.5 8.5 0 0 1-12.4 7.5L3 20l1.1-5.5A8.5 8.5 0 1 1 21 11.5z"/></svg>
+          </a>
+          <a href="mailto:etimblessing35@gmail.com" aria-label="Email" class="w-9 h-9 border border-bone/20 hover:border-gold hover:text-gold rounded-full flex items-center justify-center transition-all">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+          </a>
+        </div>
+      </div>
+      <div>
+        <h4 class="text-[11px] tracking-[2.5px] uppercase text-gold mb-4.5">Shop</h4>
+        <ul class="list-none" id="footerCats"></ul>
+      </div>
+      <div>
+        <h4 class="text-[11px] tracking-[2.5px] uppercase text-gold mb-4.5">Contact</h4>
+        <ul class="list-none space-y-2.5 text-[13.5px] text-bone/75">
+          <li><a id="footWhatsappLink" href="#" target="_blank" rel="noopener" class="hover:text-gold">WhatsApp: 0810 875 8309</a></li>
+          <li><a href="mailto:etimblessing35@gmail.com" class="hover:text-gold">etimblessing35@gmail.com</a></li>
+          <li><a href="https://instagram.com/blissbeeventures" target="_blank" rel="noopener" class="hover:text-gold">@blissbeeventures</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="text-[11px] tracking-[2.5px] uppercase text-gold mb-4.5">Visit</h4>
+        <ul class="list-none space-y-2.5 text-[13.5px] text-bone/75">
+          <li>88 Ekpri Nsukara Road,<br>Uyo, Akwa Ibom</li>
+          <li class="mt-3.5">Payments: Moniepoint<br>Blessing Etim<br>8214782937</li>
+        </ul>
+      </div>
+    </div>
+    <div class="pt-6 flex justify-between flex-wrap gap-2.5 text-xs text-bone/45">
+      <span>&copy; <span id="year"></span> Bliss Bee LuxuryWears. All rights reserved.</span>
+    </div>
+  </div>
+</footer>
+
+<div class="fixed inset-0 bg-ink/55 opacity-0 pointer-events-none transition-opacity duration-300 z-[90]" id="overlay"></div>
+<div class="fixed top-0 right-0 h-full w-full max-w-[420px] bg-bone z-[95] translate-x-full transition-transform duration-300 flex flex-col shadow-lg2" id="cartDrawer">
+  <div class="flex items-center justify-between px-6 py-5.5 border-b border-black/10">
+    <h3 class="font-serif italic text-2xl">Your Bag</h3>
+    <button id="cartCloseBtn" aria-label="Close cart" class="text-2xl">&times;</button>
+  </div>
+  <div class="flex-1 overflow-y-auto px-6 py-4.5" id="cartBody"></div>
+  <div class="px-6 py-5.5 border-t border-black/10 hidden" id="cartFoot">
+    <div class="flex justify-between mb-4 text-sm"><span>Subtotal</span><b id="cartTotal" class="text-lg font-serif">&#8358;0</b></div>
+    <div class="text-[11.5px] text-[#8a8477] mb-4 leading-relaxed">Prices confirmed on WhatsApp before payment. Payment via Moniepoint transfer to Blessing Etim &mdash; details sent after you confirm your order.</div>
+    <button id="checkoutBtn" class="w-full bg-[#25D366] hover:bg-[#1ebe5a] text-white border-none py-3.5 text-[13px] tracking-[2px] uppercase rounded flex items-center justify-center gap-2.5 font-semibold">Checkout via WhatsApp</button>
+  </div>
+</div>
+
+<div class="fixed inset-0 bg-ink/72 z-[110] opacity-0 pointer-events-none transition-opacity duration-300 flex items-center justify-center p-6" id="qvOverlay">
+  <div class="bg-bone max-w-[820px] w-full max-h-[88vh] overflow-auto grid grid-cols-1 md:grid-cols-2 shadow-lg2 relative scale-95 transition-transform duration-300" id="qvModal"></div>
+</div>
+
+<button id="toTop" aria-label="Back to top" class="fixed bottom-6 right-6 w-11 h-11 rounded-full bg-ink text-gold border-none cursor-pointer z-[60] flex items-center justify-center text-lg opacity-0 pointer-events-none transition-all shadow-card">&uarr;</button>
+
+<script>
+const PRODUCTS = [{"id":"BB001","category":"hoodies","name":"Classic Fleece Hoodie","image":"assets/products/hoodies/1784053810839.jpg","price":0},{"id":"BB002","category":"hoodies","name":"Camo Hoodie","image":"assets/products/hoodies/1784053861417.jpg","price":0},{"id":"BB003","category":"hoodies","name":"Graphic Pullover Hoodie","image":"assets/products/hoodies/1784054088856.jpg","price":0},{"id":"BB004","category":"hoodies","name":"Leopard Print Hoodie","image":"assets/products/hoodies/1784054102726.jpg","price":0},{"id":"BB005","category":"hoodies","name":"Oversized Hoodie","image":"assets/products/hoodies/1784054111531.jpg","price":0},{"id":"BB006","category":"hoodies","name":"Signature Zip Hoodie","image":"assets/products/hoodies/1784054222245.jpg","price":0},{"id":"BB007","category":"hoodies","name":"Bold Print Hoodie","image":"assets/products/hoodies/1784054226927.jpg","price":0},{"id":"BB008","category":"hoodies","name":"Street Hoodie","image":"assets/products/hoodies/1784054345460.jpg","price":0},{"id":"BB009","category":"hoodies","name":"Heavyweight Hoodie","image":"assets/products/hoodies/1784054353278.jpg","price":0},{"id":"BB010","category":"hoodies","name":"Essential Hoodie","image":"assets/products/hoodies/1784054378807.jpg","price":0},{"id":"BB011","category":"jeans","name":"Cargo Denim Shorts","image":"assets/products/jeans/1784053756669.jpg","price":0},{"id":"BB012","category":"jeans","name":"Patchwork Denim","image":"assets/products/jeans/1784053758738.jpg","price":0},{"id":"BB013","category":"jeans","name":"Denim Overalls","image":"assets/products/jeans/1784053760677.jpg","price":0},{"id":"BB014","category":"jeans","name":"Light Wash Jeans","image":"assets/products/jeans/1784053762879.jpg","price":0},{"id":"BB015","category":"jeans","name":"Studded Denim","image":"assets/products/jeans/1784053770417.jpg","price":0},{"id":"BB016","category":"jeans","name":"Black Denim Shorts","image":"assets/products/jeans/1784053772708.jpg","price":0},{"id":"BB017","category":"jeans","name":"Vintage Wash Jeans","image":"assets/products/jeans/1784053784284.jpg","price":0},{"id":"BB018","category":"jeans","name":"Relaxed Fit Denim","image":"assets/products/jeans/1784053841714.jpg","price":0},{"id":"BB019","category":"jeans","name":"Faded Denim Shorts","image":"assets/products/jeans/1784053846793.jpg","price":0},{"id":"BB020","category":"jeans","name":"Ripped Denim Shorts","image":"assets/products/jeans/1784053890027.jpg","price":0},{"id":"BB021","category":"jeans","name":"Distressed Denim Shorts","image":"assets/products/jeans/1784053896543.jpg","price":0},{"id":"BB022","category":"jeans","name":"Bootcut Denim","image":"assets/products/jeans/1784053900358.jpg","price":0},{"id":"BB023","category":"jeans","name":"Baggy Denim","image":"assets/products/jeans/1784053921299.jpg","price":0},{"id":"BB024","category":"jeans","name":"Straight Leg Denim","image":"assets/products/jeans/1784054051759.jpg","price":0},{"id":"BB025","category":"jeans","name":"Washed Denim Shorts","image":"assets/products/jeans/1784054152780.jpg","price":0},{"id":"BB026","category":"jeans","name":"Boyfriend Fit Jeans","image":"assets/products/jeans/1784054256203.jpg","price":0},{"id":"BB027","category":"jeans","name":"Vintage Denim Shorts","image":"assets/products/jeans/1784054258308.jpg","price":0},{"id":"BB028","category":"jeans","name":"Stone Wash Jeans","image":"assets/products/jeans/1784054290538.jpg","price":0},{"id":"BB029","category":"jeans","name":"Flared Denim","image":"assets/products/jeans/1784054298479.jpg","price":0},{"id":"BB030","category":"jeans","name":"Classic Straight Jeans","image":"assets/products/jeans/1784054302583.jpg","price":0},{"id":"BB031","category":"jeans","name":"Slim Fit Denim","image":"assets/products/jeans/1784054304577.jpg","price":0},{"id":"BB032","category":"jeans","name":"Grey Wash Jeans","image":"assets/products/jeans/1784054340762.jpg","price":0},{"id":"BB033","category":"casual","name":"Chore Jacket","image":"assets/products/casual/1772723892352.jpg","price":0},{"id":"BB034","category":"casual","name":"Classic Polo Shirt","image":"assets/products/casual/1779313074285.jpg","price":0},{"id":"BB035","category":"casual","name":"Vintage Jersey","image":"assets/products/casual/1779508354180.jpg","price":0},{"id":"BB036","category":"casual","name":"Sweatpants","image":"assets/products/casual/1779508385180.jpg","price":0},{"id":"BB037","category":"casual","name":"Track Jacket","image":"assets/products/casual/1779508401926.jpg","price":0},{"id":"BB038","category":"casual","name":"Bliss Bee Signature Tee","image":"assets/products/casual/1779849234498.jpg","price":0},{"id":"BB039","category":"casual","name":"Two-Piece Set","image":"assets/products/casual/1784053754465.jpg","price":0},{"id":"BB040","category":"casual","name":"Colorblock Tee","image":"assets/products/casual/1784053765306.jpg","price":0},{"id":"BB041","category":"casual","name":"Knit Polo","image":"assets/products/casual/1784053767466.jpg","price":0},{"id":"BB042","category":"casual","name":"Checkered Joggers","image":"assets/products/casual/1784053774861.jpg","price":0},{"id":"BB043","category":"casual","name":"Button-Up Shirt","image":"assets/products/casual/1784053786656.jpg","price":0},{"id":"BB044","category":"casual","name":"Statement Shirt","image":"assets/products/casual/1784053788849.jpg","price":0},{"id":"BB045","category":"casual","name":"Cargo Shorts","image":"assets/products/casual/1784053791190.jpg","price":0},{"id":"BB046","category":"casual","name":"Relaxed Tank Top","image":"assets/products/casual/1784053793745.jpg","price":0},{"id":"BB047","category":"casual","name":"Wide Leg Trousers","image":"assets/products/casual/1784053795740.jpg","price":0},{"id":"BB048","category":"casual","name":"Puffer Vest","image":"assets/products/casual/1784053797769.jpg","price":0},{"id":"BB049","category":"casual","name":"Oversized Tee","image":"assets/products/casual/1784053799844.jpg","price":0},{"id":"BB050","category":"casual","name":"Bomber Jacket","image":"assets/products/casual/1784053802865.jpg","price":0},{"id":"BB051","category":"casual","name":"Racer Jacket","image":"assets/products/casual/1784053805996.jpg","price":0},{"id":"BB052","category":"casual","name":"Sweatshirt","image":"assets/products/casual/1784053808173.jpg","price":0},{"id":"BB053","category":"casual","name":"Striped Tee","image":"assets/products/casual/1784053812995.jpg","price":0},{"id":"BB054","category":"casual","name":"Cardigan","image":"assets/products/casual/1784053815064.jpg","price":0},{"id":"BB055","category":"casual","name":"Windbreaker","image":"assets/products/casual/1784053826698.jpg","price":0},{"id":"BB056","category":"casual","name":"Camo Shorts","image":"assets/products/casual/1784053831230.jpg","price":0},{"id":"BB057","category":"casual","name":"Boxy Fit Tee","image":"assets/products/casual/1784053833388.jpg","price":0},{"id":"BB058","category":"casual","name":"Retro Football Jersey","image":"assets/products/casual/1784053852573.jpg","price":0},{"id":"BB059","category":"casual","name":"Cropped Tee","image":"assets/products/casual/1784053855303.jpg","price":0},{"id":"BB060","category":"casual","name":"Athletic Shorts","image":"assets/products/casual/1784053857418.jpg","price":0},{"id":"BB061","category":"casual","name":"Matching Tracksuit Set","image":"assets/products/casual/1784053859482.jpg","price":0},{"id":"BB062","category":"casual","name":"Graphic Print Tee","image":"assets/products/casual/1784053863540.jpg","price":0},{"id":"BB063","category":"casual","name":"Chore Jacket II","image":"assets/products/casual/1784053865703.jpg","price":0},{"id":"BB064","category":"casual","name":"Classic Polo Shirt II","image":"assets/products/casual/1784053874172.jpg","price":0},{"id":"BB065","category":"casual","name":"Vintage Jersey II","image":"assets/products/casual/1784053876197.jpg","price":0},{"id":"BB066","category":"casual","name":"Sweatpants II","image":"assets/products/casual/1784053878299.jpg","price":0},{"id":"BB067","category":"casual","name":"Track Jacket II","image":"assets/products/casual/1784053884113.jpg","price":0},{"id":"BB068","category":"casual","name":"Bliss Bee Signature Tee II","image":"assets/products/casual/1784053886110.jpg","price":0},{"id":"BB069","category":"casual","name":"Two-Piece Set II","image":"assets/products/casual/1784053892220.jpg","price":0},{"id":"BB070","category":"casual","name":"Colorblock Tee II","image":"assets/products/casual/1784053894518.jpg","price":0},{"id":"BB071","category":"casual","name":"Knit Polo II","image":"assets/products/casual/1784053898466.jpg","price":0},{"id":"BB072","category":"casual","name":"Checkered Joggers II","image":"assets/products/casual/1784053923074.jpg","price":0},{"id":"BB073","category":"casual","name":"Button-Up Shirt II","image":"assets/products/casual/1784053936025.jpg","price":0},{"id":"BB074","category":"casual","name":"Statement Shirt II","image":"assets/products/casual/1784053939137.jpg","price":0},{"id":"BB075","category":"casual","name":"Cargo Shorts II","image":"assets/products/casual/1784054015529.jpg","price":0},{"id":"BB076","category":"casual","name":"Relaxed Tank Top II","image":"assets/products/casual/1784054019402.jpg","price":0},{"id":"BB077","category":"casual","name":"Wide Leg Trousers II","image":"assets/products/casual/1784054047559.jpg","price":0},{"id":"BB078","category":"casual","name":"Puffer Vest II","image":"assets/products/casual/1784054049812.jpg","price":0},{"id":"BB079","category":"casual","name":"Oversized Tee II","image":"assets/products/casual/1784054056249.jpg","price":0},{"id":"BB080","category":"casual","name":"Bomber Jacket II","image":"assets/products/casual/1784054071934.jpg","price":0},{"id":"BB081","category":"casual","name":"Racer Jacket II","image":"assets/products/casual/1784054074130.jpg","price":0},{"id":"BB082","category":"casual","name":"Sweatshirt II","image":"assets/products/casual/1784054078236.jpg","price":0},{"id":"BB083","category":"casual","name":"Striped Tee II","image":"assets/products/casual/1784054086864.jpg","price":0},{"id":"BB084","category":"casual","name":"Cardigan II","image":"assets/products/casual/1784054091113.jpg","price":0},{"id":"BB085","category":"casual","name":"Windbreaker II","image":"assets/products/casual/1784054100695.jpg","price":0},{"id":"BB086","category":"casual","name":"Camo Shorts II","image":"assets/products/casual/1784054104618.jpg","price":0},{"id":"BB087","category":"casual","name":"Boxy Fit Tee II","image":"assets/products/casual/1784054107174.jpg","price":0},{"id":"BB088","category":"casual","name":"Retro Football Jersey II","image":"assets/products/casual/1784054109332.jpg","price":0},{"id":"BB089","category":"casual","name":"Cropped Tee II","image":"assets/products/casual/1784054113442.jpg","price":0},{"id":"BB090","category":"casual","name":"Athletic Shorts II","image":"assets/products/casual/1784054115873.jpg","price":0},{"id":"BB091","category":"casual","name":"Matching Tracksuit Set II","image":"assets/products/casual/1784054118273.jpg","price":0},{"id":"BB092","category":"casual","name":"Graphic Print Tee II","image":"assets/products/casual/1784054150387.jpg","price":0},{"id":"BB093","category":"casual","name":"Chore Jacket III","image":"assets/products/casual/1784054154782.jpg","price":0},{"id":"BB094","category":"casual","name":"Classic Polo Shirt III","image":"assets/products/casual/1784054158260.jpg","price":0},{"id":"BB095","category":"casual","name":"Vintage Jersey III","image":"assets/products/casual/1784054160181.jpg","price":0},{"id":"BB096","category":"casual","name":"Sweatpants III","image":"assets/products/casual/1784054194406.jpg","price":0},{"id":"BB097","category":"casual","name":"Track Jacket III","image":"assets/products/casual/1784054205626.jpg","price":0},{"id":"BB098","category":"casual","name":"Bliss Bee Signature Tee III","image":"assets/products/casual/1784054208019.jpg","price":0},{"id":"BB099","category":"casual","name":"Two-Piece Set III","image":"assets/products/casual/1784054213260.jpg","price":0},{"id":"BB100","category":"casual","name":"Colorblock Tee III","image":"assets/products/casual/1784054216258.jpg","price":0},{"id":"BB101","category":"casual","name":"Knit Polo III","image":"assets/products/casual/1784054225118.jpg","price":0},{"id":"BB102","category":"casual","name":"Checkered Joggers III","image":"assets/products/casual/1784054228985.jpg","price":0},{"id":"BB103","category":"casual","name":"Button-Up Shirt III","image":"assets/products/casual/1784054234362.jpg","price":0},{"id":"BB104","category":"casual","name":"Statement Shirt III","image":"assets/products/casual/1784054249578.jpg","price":0},{"id":"BB105","category":"casual","name":"Cargo Shorts III","image":"assets/products/casual/1784054252086.jpg","price":0},{"id":"BB106","category":"casual","name":"Relaxed Tank Top III","image":"assets/products/casual/1784054254023.jpg","price":0},{"id":"BB107","category":"casual","name":"Wide Leg Trousers III","image":"assets/products/casual/1784054292597.jpg","price":0},{"id":"BB108","category":"casual","name":"Puffer Vest III","image":"assets/products/casual/1784054294612.jpg","price":0},{"id":"BB109","category":"casual","name":"Oversized Tee III","image":"assets/products/casual/1784054296578.jpg","price":0},{"id":"BB110","category":"casual","name":"Bomber Jacket III","image":"assets/products/casual/1784054300386.jpg","price":0},{"id":"BB111","category":"casual","name":"Racer Jacket III","image":"assets/products/casual/1784054308811.jpg","price":0},{"id":"BB112","category":"casual","name":"Sweatshirt III","image":"assets/products/casual/1784054336221.jpg","price":0},{"id":"BB113","category":"casual","name":"Striped Tee III","image":"assets/products/casual/1784054338612.jpg","price":0},{"id":"BB114","category":"casual","name":"Cardigan III","image":"assets/products/casual/1784054343172.jpg","price":0},{"id":"BB115","category":"casual","name":"Windbreaker III","image":"assets/products/casual/1784054355380.jpg","price":0},{"id":"BB116","category":"casual","name":"Camo Shorts III","image":"assets/products/casual/1784054357690.jpg","price":0},{"id":"BB117","category":"casual","name":"Boxy Fit Tee III","image":"assets/products/casual/1784054362382.jpg","price":0},{"id":"BB118","category":"casual","name":"Retro Football Jersey III","image":"assets/products/casual/1784054372678.jpg","price":0},{"id":"BB119","category":"casual","name":"Cropped Tee III","image":"assets/products/casual/1784054376142.jpg","price":0},{"id":"BB120","category":"casual","name":"Athletic Shorts III","image":"assets/products/casual/1784054447907.jpg","price":0},{"id":"BB121","category":"casual","name":"Matching Tracksuit Set III","image":"assets/products/casual/1784054449815.jpg","price":0},{"id":"BB122","category":"casual","name":"Graphic Print Tee III","image":"assets/products/casual/1784054454008.jpg","price":0},{"id":"BB123","category":"casual","name":"Chore Jacket III","image":"assets/products/casual/1784054456171.jpg","price":0},{"id":"BB124","category":"casual","name":"Classic Polo Shirt III","image":"assets/products/casual/1784054460202.jpg","price":0},{"id":"BB125","category":"casual","name":"Vintage Jersey III","image":"assets/products/casual/1784054500505.jpg","price":0},{"id":"BB126","category":"casual","name":"Sweatpants III","image":"assets/products/casual/1784054504421.jpg","price":0},{"id":"BB127","category":"casual","name":"Track Jacket III","image":"assets/products/casual/1784054508413.jpg","price":0},{"id":"BB128","category":"casual","name":"Bliss Bee Signature Tee III","image":"assets/products/casual/1784054510356.jpg","price":0},{"id":"BB129","category":"casual","name":"Two-Piece Set III","image":"assets/products/casual/1784054524026.jpg","price":0},{"id":"BB130","category":"casual","name":"Colorblock Tee III","image":"assets/products/casual/1784054538051.jpg","price":0},{"id":"BB131","category":"accessories","name":"Slide Sandals","image":"assets/products/accessories/1784053837680.jpg","price":0},{"id":"BB132","category":"accessories","name":"Watch & Belt Gift Set","image":"assets/products/accessories/1784053839790.jpg","price":0},{"id":"BB133","category":"accessories","name":"Woven Chain Necklace","image":"assets/products/accessories/1784053844741.jpg","price":0},{"id":"BB134","category":"accessories","name":"Leather Belt","image":"assets/products/accessories/1784053848607.jpg","price":0},{"id":"BB135","category":"accessories","name":"Classic Slides","image":"assets/products/accessories/1784053850511.jpg","price":0},{"id":"BB136","category":"accessories","name":"Statement Backpack","image":"assets/products/accessories/1784053881692.jpg","price":0},{"id":"BB137","category":"accessories","name":"Signature Duffel Bag","image":"assets/products/accessories/1784053978607.jpg","price":0},{"id":"BB138","category":"accessories","name":"Comfort Clogs","image":"assets/products/accessories/1784053981112.jpg","price":0},{"id":"BB139","category":"accessories","name":"Everyday Slides","image":"assets/products/accessories/1784054054076.jpg","price":0},{"id":"BB140","category":"accessories","name":"Crossbody Bag","image":"assets/products/accessories/1784054058701.jpg","price":0},{"id":"BB141","category":"accessories","name":"Luxury Perfume Set","image":"assets/products/accessories/1784054080451.jpg","price":0},{"id":"BB142","category":"accessories","name":"Layered Chain","image":"assets/products/accessories/1784054082834.jpg","price":0},{"id":"BB143","category":"accessories","name":"Weekender Bag","image":"assets/products/accessories/1784054084845.jpg","price":0},{"id":"BB144","category":"accessories","name":"Travel Duffel","image":"assets/products/accessories/1784054095864.jpg","price":0},{"id":"BB145","category":"accessories","name":"Slide Sandals II","image":"assets/products/accessories/1784054191543.jpg","price":0},{"id":"BB146","category":"accessories","name":"Watch & Belt Gift Set II","image":"assets/products/accessories/1784054351244.jpg","price":0},{"id":"BB147","category":"accessories","name":"Woven Chain Necklace II","image":"assets/products/accessories/1784054382140.jpg","price":0},{"id":"BB148","category":"accessories","name":"Leather Belt II","image":"assets/products/accessories/1784054399659.jpg","price":0},{"id":"BB149","category":"accessories","name":"Classic Slides II","image":"assets/products/accessories/1784054401926.jpg","price":0},{"id":"BB150","category":"accessories","name":"Statement Backpack II","image":"assets/products/accessories/1784054403892.jpg","price":0},{"id":"BB151","category":"accessories","name":"Signature Duffel Bag II","image":"assets/products/accessories/1784054406127.jpg","price":0},{"id":"BB152","category":"accessories","name":"Comfort Clogs II","image":"assets/products/accessories/1784054408646.jpg","price":0},{"id":"BB153","category":"accessories","name":"Everyday Slides II","image":"assets/products/accessories/1784054411722.jpg","price":0},{"id":"BB154","category":"accessories","name":"Crossbody Bag II","image":"assets/products/accessories/1784054415084.jpg","price":0},{"id":"BB155","category":"accessories","name":"Luxury Perfume Set II","image":"assets/products/accessories/1784054417459.jpg","price":0},{"id":"BB156","category":"accessories","name":"Layered Chain II","image":"assets/products/accessories/1784054422291.jpg","price":0},{"id":"BB157","category":"accessories","name":"Weekender Bag II","image":"assets/products/accessories/1784054425280.jpg","price":0},{"id":"BB158","category":"accessories","name":"Travel Duffel II","image":"assets/products/accessories/1784054428040.jpg","price":0},{"id":"BB159","category":"accessories","name":"Slide Sandals III","image":"assets/products/accessories/1784054430601.jpg","price":0},{"id":"BB160","category":"accessories","name":"Watch & Belt Gift Set III","image":"assets/products/accessories/1784054433390.jpg","price":0},{"id":"BB161","category":"accessories","name":"Woven Chain Necklace III","image":"assets/products/accessories/1784054435951.jpg","price":0},{"id":"BB162","category":"accessories","name":"Leather Belt III","image":"assets/products/accessories/1784054438225.jpg","price":0},{"id":"BB163","category":"accessories","name":"Classic Slides III","image":"assets/products/accessories/1784054440507.jpg","price":0},{"id":"BB164","category":"dresses","name":"Flowing Midi Dress","image":"assets/products/dresses/1784053835584.jpg","price":0},{"id":"BB165","category":"dresses","name":"Signature Bliss Dress","image":"assets/products/dresses/1784054513850.jpg","price":0}];
+
+const CATEGORY_LABELS = { all: "All Pieces", hoodies: "Hoodies", jeans: "Denim", casual: "Casual Wear", accessories: "Accessories", dresses: "Dresses" };
+const WHATSAPP_NUMBER = "2348108758309";
+
+let currentCategory = "all";
+let searchQuery = "";
+let visibleCount = 12;
+let cart = [];
+
+document.getElementById('ctaWhatsapp').href = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent("Hi Bliss Bee LuxuryWears! I'd like to join your WhatsApp community for new drops and restocks.")}`;
+document.getElementById('footWhatsappIcon').href = `https://wa.me/${WHATSAPP_NUMBER}`;
+document.getElementById('footWhatsappLink').href = `https://wa.me/${WHATSAPP_NUMBER}`;
+
+const track = document.getElementById('marqueeTrack');
+for(let i=0;i<10;i++){
+  const s=document.createElement('span');
+  s.className = 'text-[11.5px] tracking-[3px] uppercase px-6 inline-flex items-center gap-6';
+  s.innerHTML = 'BLISS BEE LUXURYWEARS <span class="text-gold/60">&bull;</span>';
+  track.appendChild(s);
+}
+
+const cats = ["all", ...Array.from(new Set(PRODUCTS.map(p=>p.category)))];
+const catScroll = document.getElementById('catScroll');
+const footerCats = document.getElementById('footerCats');
+const pillBase = 'flex-none px-5 py-2.5 border border-black/[.18] rounded-full text-xs tracking-[1.5px] uppercase cursor-pointer bg-transparent text-ink transition-all whitespace-nowrap hover:bg-ink hover:border-ink hover:text-bone';
+cats.forEach(c=>{
+  const pill = document.createElement('button');
+  pill.className = pillBase + (c==='all' ? ' bg-ink border-ink text-bone' : '');
+  pill.dataset.cat = c;
+  pill.textContent = CATEGORY_LABELS[c] || c;
+  pill.onclick = ()=> setCategory(c);
+  catScroll.appendChild(pill);
+  if(c !== 'all'){
+    const li = document.createElement('li');
+    li.className = 'mb-2.5 text-[13.5px] text-bone/75';
+    const a = document.createElement('a');
+    a.href = '#shop'; a.className='hover:text-gold'; a.textContent = CATEGORY_LABELS[c] || c;
+    a.onclick = ()=> setCategory(c);
+    li.appendChild(a); footerCats.appendChild(li);
+  }
+});
+function setCategory(c){
+  currentCategory = c; visibleCount = 12;
+  document.querySelectorAll('#catScroll button').forEach(p=>{
+    const active = p.dataset.cat === c;
+    p.className = pillBase + (active ? ' bg-ink border-ink text-bone' : '');
+  });
+  document.getElementById('shopTitle').textContent = CATEGORY_LABELS[c] || c;
+  renderGrid();
+  document.getElementById('shop').scrollIntoView({behavior:'smooth', block:'start'});
+}
+
+const searchToggle = document.getElementById('searchToggle');
+const searchBar = document.getElementById('searchBar');
+const searchInput = document.getElementById('searchInput');
+let searchOpen = false;
+searchToggle.onclick = ()=>{
+  searchOpen = !searchOpen;
+  searchBar.style.maxHeight = searchOpen ? '70px' : '0px';
+  if(searchOpen) searchInput.focus();
+};
+document.getElementById('searchClose').onclick = ()=>{ searchOpen=false; searchBar.style.maxHeight='0px'; };
+searchInput.oninput = (e)=>{ searchQuery = e.target.value.toLowerCase().trim(); visibleCount = 12; renderGrid(); };
+
+// ---------- mobile menu ----------
+const menuToggle = document.getElementById('menuToggle');
+const mobileMenu = document.getElementById('mobileMenu');
+const menuBar1 = document.getElementById('menuBar1');
+const menuBar2 = document.getElementById('menuBar2');
+const menuBar3 = document.getElementById('menuBar3');
+let menuOpen = false;
+function setMenu(open){
+  menuOpen = open;
+  mobileMenu.style.maxHeight = open ? mobileMenu.scrollHeight + 'px' : '0px';
+  menuToggle.setAttribute('aria-expanded', String(open));
+  menuBar1.style.transform = open ? 'translateY(6.5px) rotate(45deg)' : 'none';
+  menuBar2.style.opacity = open ? '0' : '1';
+  menuBar3.style.transform = open ? 'translateY(-6.5px) rotate(-45deg)' : 'none';
+  if(open){ searchOpen = false; searchBar.style.maxHeight = '0px'; }
+}
+menuToggle.onclick = ()=> setMenu(!menuOpen);
+mobileMenu.querySelectorAll('a').forEach(a=> a.onclick = ()=> setMenu(false));
+
+function getFiltered(){
+  return PRODUCTS.filter(p=>{
+    const catMatch = currentCategory==='all' || p.category===currentCategory;
+    const searchMatch = !searchQuery || p.name.toLowerCase().includes(searchQuery) || (CATEGORY_LABELS[p.category]||'').toLowerCase().includes(searchQuery);
+    return catMatch && searchMatch;
+  });
+}
+function renderGrid(){
+  const grid = document.getElementById('productGrid');
+  grid.innerHTML = '';
+  const items = getFiltered();
+  document.getElementById('shopCount').textContent = items.length + ' item' + (items.length===1?'':'s');
+  if(items.length === 0){
+    grid.innerHTML = '<div class="col-span-full text-center py-16 px-5 text-[#8a8477] font-serif italic text-xl">No pieces match &mdash; try another search or category.</div>';
+    document.getElementById('loadMoreWrap').classList.add('hidden');
+    return;
+  }
+  const shown = items.slice(0, visibleCount);
+  shown.forEach(p=>{
+    const globalIdx = PRODUCTS.indexOf(p);
+    const isNew = (globalIdx % 15) < 2;
+    const card = document.createElement('div');
+    card.className = 'card bg-white relative cursor-pointer border border-black/[.06] hover:shadow-card hover:border-gold/30 hover:-translate-y-1.5 transition-all duration-300';
+    card.innerHTML = `
+      <div class="card-img-wrap aspect-[4/5] overflow-hidden bg-gray-100 relative">
+        <span class="absolute top-2.5 left-2.5 bg-ink text-gold text-[9.5px] tracking-[2px] px-2.5 py-1.5 uppercase">${p.id}</span>
+        ${isNew ? '<span class="absolute top-2.5 right-2.5 bg-gold text-ink text-[9.5px] tracking-[2px] px-2.5 py-1.5 uppercase font-semibold">New</span>' : ''}
+        <img src="${p.image}" alt="${p.name}" loading="lazy" class="w-full h-full object-cover">
+        <div class="quick-view-strip absolute bottom-0 left-0 right-0 bg-ink/90 text-bone text-center py-2.5 text-[11px] tracking-[2px] uppercase">Quick View</div>
+      </div>
+      <div class="p-4 pb-4.5">
+        <div class="text-[10px] tracking-[2px] uppercase text-gold mb-1.5">${CATEGORY_LABELS[p.category] || p.category}</div>
+        <div class="font-serif font-semibold text-lg mb-2.5 leading-tight">${p.name}</div>
+        <div class="flex items-center justify-between">
+          <span class="text-sm font-semibold tracking-wide">${p.price > 0 ? '&#8358;' + p.price.toLocaleString() : 'DM for price'}</span>
+          <button class="add-btn border border-ink hover:bg-ink hover:text-bone w-8.5 h-8.5 rounded-full text-lg flex items-center justify-center transition-all" data-id="${p.id}">+</button>
+        </div>
+      </div>
+    `;
+    card.querySelector('.card-img-wrap').onclick = ()=> openQuickView(p.id);
+    card.querySelector('.font-serif').onclick = ()=> openQuickView(p.id);
+    grid.appendChild(card);
+  });
+  grid.querySelectorAll('.add-btn').forEach(btn=>{
+    btn.onclick = (e)=>{
+      e.stopPropagation();
+      addToCart(btn.dataset.id);
+      btn.textContent = '\u2713';
+      setTimeout(()=> btn.textContent = '+', 700);
+    };
+  });
+  document.getElementById('loadMoreWrap').classList.toggle('hidden', items.length <= visibleCount);
+}
+document.getElementById('loadMoreBtn').onclick = ()=>{ visibleCount += 12; renderGrid(); };
+
+const qvOverlay = document.getElementById('qvOverlay');
+const qvModal = document.getElementById('qvModal');
+const descPool = [
+  "A statement piece built for everyday wear, cut for comfort without losing its edge.",
+  "Premium fabric, clean finish &mdash; made to be worn on repeat.",
+  "A closet essential with just enough attitude to stand out.",
+  "Tailored for movement and made to hold its shape, wash after wash."
+];
+function openQuickView(id){
+  const p = PRODUCTS.find(x=>x.id===id);
+  const desc = descPool[Math.abs(id.charCodeAt(2)+id.length) % descPool.length];
+  const waMsg = encodeURIComponent(`Hi Bliss Bee! I'm interested in ${p.name} (${p.id}). Is it available?`);
+  qvModal.innerHTML = `
+    <button class="absolute top-4 right-4 bg-ink/80 text-bone border-none w-8.5 h-8.5 rounded-full text-xl cursor-pointer z-10" id="qvClose">&times;</button>
+    <img src="${p.image}" alt="${p.name}" class="w-full h-full object-cover min-h-[240px] md:min-h-[320px]">
+    <div class="p-8 md:p-9 flex flex-col">
+      <div class="text-[11px] tracking-[2px] uppercase text-gold mb-2.5">${CATEGORY_LABELS[p.category]}</div>
+      <div class="font-serif font-semibold text-3xl mb-3.5 leading-tight">${p.name}</div>
+      <div class="text-xl font-semibold mb-5">${p.price>0 ? '&#8358;'+p.price.toLocaleString() : 'DM for price'}</div>
+      <div class="text-xs text-[#8a8477] mb-5">Ref: ${p.id}</div>
+      <p class="text-sm leading-[1.8] text-[#5c584f] mb-7">${desc}</p>
+      <div class="flex gap-3 mt-auto">
+        <button id="qvAdd" class="flex-1 justify-center inline-flex items-center gap-2.5 px-6 py-3.5 text-[12.5px] tracking-[2px] uppercase rounded-sm bg-gold border border-gold text-ink font-semibold hover:bg-goldbright transition-all">Add to Bag</button>
+        <a href="https://wa.me/${WHATSAPP_NUMBER}?text=${waMsg}" target="_blank" class="flex-1 justify-center inline-flex items-center gap-2.5 px-6 py-3.5 text-[12.5px] tracking-[2px] uppercase rounded-sm border border-ink text-ink hover:border-gold hover:text-gold transition-all">Ask on WhatsApp</a>
+      </div>
+    </div>
+  `;
+  document.getElementById('qvClose').onclick = closeQuickView;
+  document.getElementById('qvAdd').onclick = ()=>{ addToCart(p.id); closeQuickView(); openCart(); };
+  qvOverlay.classList.remove('opacity-0','pointer-events-none');
+  qvModal.classList.remove('scale-95'); qvModal.classList.add('scale-100');
+}
+function closeQuickView(){
+  qvOverlay.classList.add('opacity-0','pointer-events-none');
+  qvModal.classList.add('scale-95'); qvModal.classList.remove('scale-100');
+}
+qvOverlay.onclick = (e)=>{ if(e.target===qvOverlay) closeQuickView(); };
+
+function addToCart(id){
+  const existing = cart.find(c=>c.id===id);
+  if(existing) existing.qty++; else cart.push({id, qty:1});
+  renderCart();
+}
+function changeQty(id, delta){
+  const item = cart.find(c=>c.id===id); if(!item) return;
+  item.qty += delta;
+  if(item.qty <= 0) cart = cart.filter(c=>c.id!==id);
+  renderCart();
+}
+function removeFromCart(id){ cart = cart.filter(c=>c.id!==id); renderCart(); }
+function renderCart(){
+  const count = cart.reduce((s,c)=>s+c.qty,0);
+  document.getElementById('cartCount').textContent = count;
+  const body = document.getElementById('cartBody');
+  const foot = document.getElementById('cartFoot');
+  if(cart.length===0){
+    body.innerHTML = '<div class="py-16 px-2.5 text-center text-[#8a8477]"><p class="font-serif italic text-xl mb-2">Your bag is empty</p><span>Add a few pieces to get started.</span></div>';
+    foot.classList.add('hidden'); return;
+  }
+  foot.classList.remove('hidden'); body.innerHTML = ''; let total = 0;
+  cart.forEach(c=>{
+    const p = PRODUCTS.find(x=>x.id===c.id);
+    total += (p.price||0) * c.qty;
+    const row = document.createElement('div');
+    row.className = 'flex gap-3.5 py-4 border-b border-black/[.08]';
+    row.innerHTML = `
+      <img src="${p.image}" alt="${p.name}" class="w-[70px] h-[88px] object-cover flex-none">
+      <div class="flex-1 flex flex-col gap-1.5">
+        <div class="text-[10px] tracking-[1.5px] uppercase text-gold">${CATEGORY_LABELS[p.category]}</div>
+        <b class="font-serif text-base">${p.name}</b>
+        <span class="text-sm">${p.price>0 ? '&#8358;'+p.price.toLocaleString() : 'Price on request'}</span>
+        <div class="flex items-center gap-2.5 mt-1">
+          <button data-act="dec" data-id="${p.id}" class="w-6 h-6 border border-black/25 rounded-full text-sm">&minus;</button>
+          <span>${c.qty}</span>
+          <button data-act="inc" data-id="${p.id}" class="w-6 h-6 border border-black/25 rounded-full text-sm">+</button>
+        </div>
+        <span class="remove-link text-[11px] underline text-[#8a8477] cursor-pointer mt-1.5" data-remove="${p.id}">Remove</span>
+      </div>`;
+    body.appendChild(row);
+  });
+  document.getElementById('cartTotal').innerHTML = total>0 ? '&#8358;'+total.toLocaleString() : 'To confirm';
+  body.querySelectorAll('[data-act="inc"]').forEach(b=> b.onclick = ()=>changeQty(b.dataset.id, 1));
+  body.querySelectorAll('[data-act="dec"]').forEach(b=> b.onclick = ()=>changeQty(b.dataset.id, -1));
+  body.querySelectorAll('[data-remove]').forEach(b=> b.onclick = ()=>removeFromCart(b.dataset.remove));
+}
+
+const overlay = document.getElementById('overlay');
+const drawer = document.getElementById('cartDrawer');
+function openCart(){
+  overlay.classList.remove('opacity-0','pointer-events-none');
+  drawer.classList.remove('translate-x-full');
+}
+function closeCart(){
+  overlay.classList.add('opacity-0','pointer-events-none');
+  drawer.classList.add('translate-x-full');
+}
+document.getElementById('cartOpenBtn').onclick = openCart;
+document.getElementById('cartCloseBtn').onclick = closeCart;
+overlay.onclick = closeCart;
+
+document.getElementById('checkoutBtn').onclick = ()=>{
+  if(cart.length===0) return;
+  let msg = "Hi Bliss Bee LuxuryWears! I'd like to order:%0A%0A";
+  let total = 0;
+  cart.forEach(c=>{
+    const p = PRODUCTS.find(x=>x.id===c.id);
+    total += (p.price||0) * c.qty;
+    msg += `- ${p.name} (${p.id}) x${c.qty}%0A`;
+  });
+  msg += `%0ATotal: ${total>0 ? '\u20a6'+total.toLocaleString() : 'to confirm'}%0A%0APlease confirm availability and total, thanks!`;
+  window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${msg}`, '_blank');
+};
+
+const testimonials = [
+  {name:"Amaka O.", loc:"Uyo", quote:"Ordered a hoodie and the quality is honestly better than I expected. Fast replies on WhatsApp too."},
+  {name:"David E.", loc:"Uyo", quote:"My go-to for denim now. Fits true to size and delivery was quick within Uyo."},
+  {name:"Precious U.", loc:"Akwa Ibom", quote:"Love how easy it is to just message and order. Bliss Bee never disappoints."}
+];
+const testGrid = document.getElementById('testGrid');
+testimonials.forEach(t=>{
+  const card = document.createElement('div');
+  card.className = 'reveal bg-white p-8 border border-black/[.07] relative';
+  card.innerHTML = `
+    <div class="text-gold text-[15px] tracking-[3px] mb-4">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+    <p class="font-serif italic text-lg leading-relaxed mb-4.5">"${t.quote}"</p>
+    <div class="flex items-center gap-3">
+      <div class="w-9.5 h-9.5 rounded-full bg-ink text-gold flex items-center justify-center font-serif font-bold text-[15px]">${t.name.charAt(0)}</div>
+      <div><b class="block text-[13.5px]">${t.name}</b><span class="text-[11px] text-[#8a8477] uppercase tracking-wide">${t.loc}</span></div>
+    </div>`;
+  testGrid.appendChild(card);
+});
+
+document.getElementById('statProducts').textContent = PRODUCTS.length;
+document.getElementById('statProductsHero').textContent = PRODUCTS.length;
+document.getElementById('year').textContent = new Date().getFullYear();
+
+const toTop = document.getElementById('toTop');
+window.addEventListener('scroll', ()=>{
+  const show = window.scrollY > 700;
+  toTop.classList.toggle('opacity-0', !show);
+  toTop.classList.toggle('pointer-events-none', !show);
+});
+toTop.onclick = ()=> window.scrollTo({top:0, behavior:'smooth'});
+
+const io = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+}, {threshold:0.15});
+document.querySelectorAll('.reveal').forEach(el=> io.observe(el));
+
+renderGrid();
+renderCart();
+</script>
+</body>
+</html>
