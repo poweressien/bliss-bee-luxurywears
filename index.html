@@ -6,608 +6,491 @@
 <title>Bliss Bee LuxuryWears &mdash; Uyo</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Jost:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<style>
-  :root{
-    --ink:#0E0D0C;
-    --charcoal:#1C1A17;
-    --bone:#F7F5F0;
-    --bone-dim:#EFECE4;
-    --gold:#C79A3E;
-    --gold-soft:#EFE1BC;
-    --gold-bright:#E4C177;
-    --sting:#A6362A;
-    --line: rgba(199,154,62,0.35);
-    --shadow: 0 20px 45px rgba(0,0,0,0.28);
-    --shadow-lg: 0 30px 70px rgba(0,0,0,0.4);
-    --serif: 'Cormorant Garamond', serif;
-    --sans: 'Jost', sans-serif;
-  }
-  *{box-sizing:border-box; margin:0; padding:0;}
-  html{scroll-behavior:smooth;}
-  body{
-    font-family: var(--sans);
-    background: var(--bone);
-    color: var(--ink);
-    -webkit-font-smoothing: antialiased;
-  }
-  a{color:inherit; text-decoration:none;}
-  img{display:block; max-width:100%;}
-  .container{max-width:1240px; margin:0 auto; padding:0 28px;}
-  ::selection{background:var(--gold); color:var(--ink);}
-
-  .reveal{opacity:0; transform:translateY(26px); transition:opacity .7s ease, transform .7s ease;}
-  .reveal.in{opacity:1; transform:none;}
-  @media (prefers-reduced-motion: reduce){ .reveal{opacity:1; transform:none; transition:none;} }
-
-  /* ---------- marquee ---------- */
-  .marquee{
-    background: var(--ink); color: var(--gold); overflow:hidden; white-space:nowrap;
-    border-bottom:1px solid var(--line); position:relative; height:38px; display:flex; align-items:center;
-  }
-  .marquee__track{ display:inline-flex; animation: scroll 32s linear infinite; }
-  .marquee__track span{
-    font-size:11.5px; letter-spacing:3px; text-transform:uppercase; padding:0 26px;
-    display:inline-flex; align-items:center; gap:26px;
-  }
-  .marquee__track span::after{content:"\2022"; color:var(--gold); opacity:.6;}
-  @keyframes scroll{0%{transform:translateX(0);} 100%{transform:translateX(-50%);}}
-  @media (prefers-reduced-motion: reduce){ .marquee__track{animation:none;} }
-
-  /* ---------- header ---------- */
-  header{
-    position:sticky; top:0; z-index:50;
-    background: rgba(247,245,240,0.92); backdrop-filter: blur(10px);
-    border-bottom:1px solid rgba(14,13,12,0.08);
-  }
-  .nav{ display:flex; align-items:center; justify-content:space-between; padding:14px 0; gap:20px; }
-  .brand{ display:flex; align-items:center; gap:12px; }
-  .brand img{height:44px; width:44px; object-fit:contain;}
-  .brand-text{display:flex; flex-direction:column; line-height:1;}
-  .brand-text b{ font-family:var(--serif); font-weight:700; font-size:20px; letter-spacing:.5px; }
-  .brand-text small{ font-size:9px; letter-spacing:3px; text-transform:uppercase; color:var(--gold); margin-top:3px; }
-  .nav-links{ display:flex; gap:30px; list-style:none; font-size:13px; letter-spacing:1.5px; text-transform:uppercase; }
-  .nav-links a{position:relative; padding-bottom:4px;}
-  .nav-links a::after{
-    content:''; position:absolute; left:0; bottom:0; width:0; height:1px; background:var(--gold);
-    transition:width .25s ease;
-  }
-  .nav-links a:hover::after{width:100%;}
-  .nav-actions{display:flex; align-items:center; gap:14px;}
-  .icon-btn{
-    background:none; border:1px solid rgba(14,13,12,0.15); width:38px; height:38px; border-radius:50%;
-    display:flex; align-items:center; justify-content:center; cursor:pointer; transition:all .2s ease;
-  }
-  .icon-btn:hover{border-color:var(--gold); color:var(--gold);}
-  .cart-btn{
-    position:relative; display:flex; align-items:center; gap:8px;
-    background:var(--ink); color:var(--bone); border:none;
-    padding:10px 18px; border-radius:2px; cursor:pointer;
-    font-size:12px; letter-spacing:2px; text-transform:uppercase; transition: background .2s ease;
-  }
-  .cart-btn:hover{background:#2b2823;}
-  .cart-count{
-    background:var(--gold); color:var(--ink); font-weight:700; border-radius:50%;
-    width:18px; height:18px; font-size:10.5px; display:flex; align-items:center; justify-content:center;
-  }
-  .menu-toggle{display:none; background:none; border:none; font-size:22px; cursor:pointer; color:var(--ink);}
-
-  /* search bar */
-  .search-bar{
-    max-height:0; overflow:hidden; transition:max-height .3s ease; background:var(--ink);
-  }
-  .search-bar.open{max-height:70px;}
-  .search-inner{display:flex; align-items:center; gap:12px; padding:14px 0;}
-  .search-inner input{
-    flex:1; background:none; border:none; border-bottom:1px solid rgba(247,245,240,0.3);
-    color:var(--bone); font-family:var(--serif); font-style:italic; font-size:20px; padding:6px 2px;
-  }
-  .search-inner input::placeholder{color:rgba(247,245,240,0.4);}
-  .search-inner input:focus{outline:none; border-color:var(--gold);}
-  .search-inner button{background:none; border:none; color:var(--gold); font-size:13px; letter-spacing:1.5px; text-transform:uppercase; cursor:pointer;}
-
-  /* ---------- hero ---------- */
-  .hero{
-    position:relative; color: var(--bone); padding:150px 0 110px; overflow:hidden; text-align:center;
-    background: var(--ink);
-  }
-  .hero-bg{
-    position:absolute; inset:0; background-size:cover; background-position:center 30%;
-    opacity:.55; filter:saturate(0.9);
-  }
-  .hero-scrim{
-    position:absolute; inset:0;
-    background: linear-gradient(180deg, rgba(14,13,12,0.55) 0%, rgba(14,13,12,0.78) 55%, rgba(14,13,12,0.96) 100%),
-                radial-gradient(circle at 50% 0%, rgba(199,154,62,0.16), transparent 55%);
-  }
-  .hero-content{position:relative;}
-  .hero-eyebrow{
-    font-size:11px; letter-spacing:5px; text-transform:uppercase; color:var(--gold); margin-bottom:22px;
-    display:inline-flex; align-items:center; gap:10px;
-  }
-  .hero-eyebrow::before, .hero-eyebrow::after{content:''; width:26px; height:1px; background:var(--gold); opacity:.6;}
-  .hero h1{
-    font-family:var(--serif); font-weight:600; font-style:italic; font-size:clamp(44px, 8.5vw, 92px);
-    line-height:1.02; margin-bottom:22px;
-  }
-  .hero h1 em{ font-style:normal; font-weight:700; color:var(--gold); display:block; }
-  .hero p{ max-width:500px; margin:0 auto 40px; color:rgba(247,245,240,0.75); font-size:16px; line-height:1.75; }
-  .hero-cta{ display:inline-flex; gap:16px; flex-wrap:wrap; justify-content:center; margin-bottom:64px; }
-  .btn{
-    display:inline-flex; align-items:center; gap:10px; padding:15px 30px; font-size:12.5px;
-    letter-spacing:2.5px; text-transform:uppercase; border-radius:2px; cursor:pointer;
-    border:1px solid transparent; transition:all .25s ease; font-family:var(--sans);
-  }
-  .btn-gold{background:var(--gold); color:var(--ink); font-weight:600;}
-  .btn-gold:hover{background:var(--gold-bright); transform:translateY(-2px); box-shadow:0 12px 30px rgba(199,154,62,0.35);}
-  .btn-ghost{border-color:rgba(247,245,240,0.4); color:var(--bone);}
-  .btn-ghost:hover{border-color:var(--gold); color:var(--gold);}
-
-  .hero-stats{
-    display:flex; justify-content:center; gap:0; flex-wrap:wrap; max-width:640px; margin:0 auto;
-    border-top:1px solid rgba(247,245,240,0.15); padding-top:34px;
-  }
-  .hero-stats div{ flex:1; min-width:140px; padding:0 18px; }
-  .hero-stats b{ display:block; font-family:var(--serif); font-size:32px; color:var(--gold); }
-  .hero-stats span{ font-size:10.5px; letter-spacing:2px; text-transform:uppercase; color:rgba(247,245,240,0.6); }
-
-  /* ---------- feature strip ---------- */
-  .features{ background:var(--bone); border-bottom:1px solid rgba(14,13,12,0.08); padding:44px 0; }
-  .feat-grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:30px; }
-  .feat{ display:flex; align-items:center; gap:14px; }
-  .feat svg{ flex:0 0 auto; width:30px; height:30px; color:var(--gold); }
-  .feat b{ display:block; font-size:13.5px; letter-spacing:.3px; margin-bottom:2px; }
-  .feat span{ font-size:12px; color:#8a8477; }
-
-  /* ---------- category strip ---------- */
-  .cat-strip{ background:var(--bone); border-bottom:1px solid rgba(14,13,12,0.08); position:sticky; top:65px; z-index:40; }
-  .cat-scroll{ display:flex; gap:10px; overflow-x:auto; padding:16px 0; scrollbar-width:none; }
-  .cat-scroll::-webkit-scrollbar{display:none;}
-  .pill{
-    flex:0 0 auto; padding:9px 20px; border:1px solid rgba(14,13,12,0.18); border-radius:30px;
-    font-size:12px; letter-spacing:1.5px; text-transform:uppercase; cursor:pointer; background:transparent;
-    color:var(--ink); transition:all .2s ease; white-space:nowrap; font-family:var(--sans);
-  }
-  .pill.active, .pill:hover{background:var(--ink); border-color:var(--ink); color:var(--bone);}
-
-  /* ---------- sections ---------- */
-  .section{padding:76px 0;}
-  .section-head{ display:flex; align-items:flex-end; justify-content:space-between; margin-bottom:38px; flex-wrap:wrap; gap:14px; }
-  .section-head h2{ font-family:var(--serif); font-style:italic; font-weight:600; font-size:clamp(28px,4vw,42px); }
-  .section-head span{ font-size:12px; letter-spacing:2px; text-transform:uppercase; color:#8a8477; }
-
-  /* ---------- product grid ---------- */
-  .grid{ display:grid; grid-template-columns:repeat(auto-fill, minmax(240px,1fr)); gap:26px 22px; }
-  .card{
-    background:#fff; position:relative; cursor:pointer; border:1px solid rgba(14,13,12,0.06);
-    transition: transform .25s ease, box-shadow .25s ease;
-  }
-  .card:hover{transform:translateY(-6px); box-shadow:var(--shadow); border-color:var(--line);}
-  .card-img{ aspect-ratio: 4/5; overflow:hidden; background:#eee; position:relative; }
-  .card-img img{width:100%; height:100%; object-fit:cover; transition:transform .5s ease;}
-  .card:hover .card-img img{transform:scale(1.06);}
-  .tag{
-    position:absolute; top:10px; left:10px; background:var(--ink); color:var(--gold); font-size:9.5px;
-    letter-spacing:2px; padding:5px 9px; text-transform:uppercase;
-  }
-  .tag-new{
-    position:absolute; top:10px; right:10px; background:var(--gold); color:var(--ink); font-size:9.5px;
-    letter-spacing:2px; padding:5px 9px; text-transform:uppercase; font-weight:600;
-  }
-  .quick-view{
-    position:absolute; bottom:0; left:0; right:0; background:rgba(14,13,12,0.88); color:var(--bone);
-    text-align:center; padding:11px; font-size:11px; letter-spacing:2px; text-transform:uppercase;
-    transform:translateY(100%); transition:transform .3s ease;
-  }
-  .card:hover .quick-view{transform:translateY(0);}
-  .card-body{padding:16px 16px 18px;}
-  .card-cat{font-size:10px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); margin-bottom:6px;}
-  .card-name{font-family:var(--serif); font-weight:600; font-size:18px; margin-bottom:10px; line-height:1.25;}
-  .card-foot{display:flex; align-items:center; justify-content:space-between;}
-  .price{font-size:14px; font-weight:600; letter-spacing:.5px;}
-  .add-btn{
-    border:1px solid var(--ink); background:none; color:var(--ink); width:34px; height:34px;
-    border-radius:50%; font-size:18px; cursor:pointer; display:flex; align-items:center;
-    justify-content:center; line-height:1; transition: all .2s ease;
-  }
-  .add-btn:hover{background:var(--ink); color:var(--bone);}
-  .empty-msg{ grid-column:1/-1; text-align:center; padding:60px 20px; color:#8a8477; font-family:var(--serif); font-style:italic; font-size:20px; }
-  .load-more-wrap{ text-align:center; margin-top:44px; }
-
-  /* ---------- testimonials ---------- */
-  .testimonials{ background:var(--bone-dim); }
-  .test-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:24px; }
-  .test-card{ background:#fff; padding:32px 28px; border:1px solid rgba(14,13,12,0.07); position:relative; }
-  .stars{ color:var(--gold); font-size:15px; letter-spacing:3px; margin-bottom:16px; }
-  .test-card p{ font-family:var(--serif); font-style:italic; font-size:18px; line-height:1.6; margin-bottom:18px; }
-  .test-who{ display:flex; align-items:center; gap:12px; }
-  .test-avatar{
-    width:38px; height:38px; border-radius:50%; background:var(--ink); color:var(--gold);
-    display:flex; align-items:center; justify-content:center; font-family:var(--serif); font-weight:700; font-size:15px;
-  }
-  .test-who b{display:block; font-size:13.5px;}
-  .test-who span{font-size:11px; color:#8a8477; text-transform:uppercase; letter-spacing:1px;}
-
-  /* ---------- about / CEO ---------- */
-  .about{ background:var(--charcoal); color:var(--bone); padding:90px 0; }
-  .about-grid{ display:grid; grid-template-columns:1fr 1.15fr; gap:64px; align-items:center; }
-  .ceo-photo-wrap{ position:relative; }
-  .ceo-photo{
-    width:100%; aspect-ratio:4/5; object-fit:cover; border:1px solid var(--line);
-    box-shadow: var(--shadow-lg);
-  }
-  .ceo-badge{
-    position:absolute; bottom:-22px; left:-22px; background:var(--gold); color:var(--ink);
-    padding:16px 22px; font-family:var(--serif); box-shadow:var(--shadow);
-  }
-  .ceo-badge b{display:block; font-size:19px;}
-  .ceo-badge span{ font-size:10px; letter-spacing:2px; text-transform:uppercase; font-family:var(--sans); font-weight:600; }
-  .about h3{font-family:var(--serif); font-style:italic; font-weight:600; font-size:36px; margin-bottom:8px;}
-  .about .eyebrow{ font-size:11px; letter-spacing:4px; text-transform:uppercase; color:var(--gold); margin-bottom:14px; display:block; }
-  .about p{color:rgba(247,245,240,0.72); line-height:1.85; font-size:15px; margin-bottom:16px;}
-  .ceo-quote{
-    border-left:2px solid var(--gold); padding-left:20px; margin:26px 0; font-family:var(--serif);
-    font-style:italic; font-size:19px; line-height:1.6; color:var(--bone);
-  }
-  .about-stats{display:flex; gap:40px; margin-top:30px; flex-wrap:wrap;}
-  .about-stats div b{display:block; font-family:var(--serif); font-size:30px; color:var(--gold);}
-  .about-stats div span{font-size:11px; letter-spacing:2px; text-transform:uppercase; color:#a49d8c;}
-
-  /* ---------- newsletter cta ---------- */
-  .cta-strip{ background:var(--gold); color:var(--ink); padding:56px 0; text-align:center; }
-  .cta-strip h3{ font-family:var(--serif); font-style:italic; font-weight:600; font-size:30px; margin-bottom:10px; }
-  .cta-strip p{ font-size:14px; margin-bottom:24px; opacity:.85; }
-  .cta-strip .btn-gold{ background:var(--ink); color:var(--gold); }
-  .cta-strip .btn-gold:hover{ background:#2b2823; box-shadow:0 12px 30px rgba(14,13,12,0.3); }
-
-  /* ---------- footer ---------- */
-  footer{background:var(--ink); color:var(--bone); padding:70px 0 30px;}
-  .footer-grid{ display:grid; grid-template-columns:1.4fr 1fr 1fr 1fr; gap:40px; padding-bottom:44px; border-bottom:1px solid rgba(247,245,240,0.1); }
-  .footer-brand b{font-family:var(--serif); font-style:italic; font-size:26px;}
-  .footer-brand p{color:rgba(247,245,240,0.6); font-size:13.5px; line-height:1.7; margin-top:14px; max-width:280px;}
-  .social-row{ display:flex; gap:10px; margin-top:18px; }
-  .social-row a{
-    width:36px; height:36px; border:1px solid rgba(247,245,240,0.2); border-radius:50%;
-    display:flex; align-items:center; justify-content:center; transition:all .2s ease;
-  }
-  .social-row a:hover{ border-color:var(--gold); color:var(--gold); }
-  footer h4{font-size:11px; letter-spacing:2.5px; text-transform:uppercase; color:var(--gold); margin-bottom:18px;}
-  footer ul{list-style:none;}
-  footer li{margin-bottom:11px; font-size:13.5px; color:rgba(247,245,240,0.75);}
-  footer li a:hover{color:var(--gold);}
-  .foot-bottom{ padding-top:26px; display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px; font-size:12px; color:rgba(247,245,240,0.45); letter-spacing:.5px; }
-
-  /* ---------- cart drawer ---------- */
-  .overlay{ position:fixed; inset:0; background:rgba(14,13,12,0.55); opacity:0; pointer-events:none; transition:opacity .3s ease; z-index:90; }
-  .overlay.show{opacity:1; pointer-events:auto;}
-  .drawer{
-    position:fixed; top:0; right:0; height:100%; width:min(420px, 92vw); background:var(--bone); z-index:95;
-    transform:translateX(100%); transition:transform .35s cubic-bezier(.4,0,.2,1);
-    display:flex; flex-direction:column; box-shadow:-10px 0 40px rgba(0,0,0,0.25);
-  }
-  .drawer.show{transform:translateX(0);}
-  .drawer-head{ display:flex; align-items:center; justify-content:space-between; padding:22px 24px; border-bottom:1px solid rgba(14,13,12,0.1); }
-  .drawer-head h3{font-family:var(--serif); font-style:italic; font-size:24px;}
-  .drawer-head button{background:none; border:none; font-size:24px; cursor:pointer; color:var(--ink);}
-  .drawer-body{flex:1; overflow-y:auto; padding:18px 24px;}
-  .cart-item{display:flex; gap:14px; padding:16px 0; border-bottom:1px solid rgba(14,13,12,0.08);}
-  .cart-item img{width:70px; height:88px; object-fit:cover; flex:0 0 auto;}
-  .ci-info{flex:1; display:flex; flex-direction:column; gap:6px;}
-  .ci-info b{font-family:var(--serif); font-size:16px;}
-  .ci-info .ci-cat{font-size:10px; letter-spacing:1.5px; text-transform:uppercase; color:var(--gold);}
-  .qty-row{display:flex; align-items:center; gap:10px; margin-top:4px;}
-  .qty-row button{ width:24px; height:24px; border:1px solid rgba(14,13,12,0.25); background:none; cursor:pointer; font-size:14px; border-radius:50%; }
-  .remove-link{font-size:11px; text-decoration:underline; color:#8a8477; cursor:pointer; margin-top:6px;}
-  .drawer-empty{padding:60px 10px; text-align:center; color:#8a8477;}
-  .drawer-empty p{font-family:var(--serif); font-style:italic; font-size:20px; margin-bottom:8px;}
-  .drawer-foot{padding:22px 24px; border-top:1px solid rgba(14,13,12,0.1);}
-  .drawer-foot .row{display:flex; justify-content:space-between; margin-bottom:16px; font-size:14px;}
-  .drawer-foot .row b{font-size:18px; font-family:var(--serif);}
-  .drawer-foot .note{font-size:11.5px; color:#8a8477; margin-bottom:16px; line-height:1.6;}
-  .checkout-btn{
-    width:100%; background:#25D366; color:#fff; border:none; padding:15px; font-size:13px;
-    letter-spacing:2px; text-transform:uppercase; border-radius:3px; cursor:pointer;
-    display:flex; align-items:center; justify-content:center; gap:10px; font-family:var(--sans); font-weight:600;
-  }
-  .checkout-btn:hover{background:#1ebe5a;}
-
-  /* ---------- quick view modal ---------- */
-  .qv-overlay{
-    position:fixed; inset:0; background:rgba(14,13,12,0.72); z-index:110; opacity:0; pointer-events:none;
-    transition:opacity .3s ease; display:flex; align-items:center; justify-content:center; padding:24px;
-  }
-  .qv-overlay.show{opacity:1; pointer-events:auto;}
-  .qv-modal{
-    background:var(--bone); max-width:820px; width:100%; max-height:88vh; overflow:auto;
-    display:grid; grid-template-columns:1fr 1fr; box-shadow:var(--shadow-lg); position:relative;
-    transform:scale(.96); transition:transform .3s ease;
-  }
-  .qv-overlay.show .qv-modal{transform:scale(1);}
-  .qv-modal img{width:100%; height:100%; object-fit:cover; min-height:320px;}
-  .qv-info{padding:38px 34px; display:flex; flex-direction:column;}
-  .qv-close{ position:absolute; top:16px; right:16px; background:rgba(14,13,12,0.8); color:var(--bone); border:none; width:34px; height:34px; border-radius:50%; font-size:20px; cursor:pointer; z-index:2;}
-  .qv-cat{font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); margin-bottom:10px;}
-  .qv-name{font-family:var(--serif); font-weight:600; font-size:30px; margin-bottom:14px; line-height:1.2;}
-  .qv-price{font-size:20px; font-weight:600; margin-bottom:20px;}
-  .qv-id{font-size:12px; color:#8a8477; margin-bottom:20px;}
-  .qv-desc{font-size:14px; line-height:1.8; color:#5c584f; margin-bottom:28px;}
-  .qv-actions{display:flex; gap:12px; margin-top:auto;}
-  .qv-actions .btn{flex:1; justify-content:center; color:var(--ink); border-color:var(--ink);}
-  .qv-actions .btn-gold{border-color:var(--gold);}
-
-  /* back to top */
-  .totop{
-    position:fixed; bottom:26px; right:26px; width:46px; height:46px; border-radius:50%;
-    background:var(--ink); color:var(--gold); border:none; cursor:pointer; z-index:60;
-    display:flex; align-items:center; justify-content:center; font-size:18px; opacity:0; pointer-events:none;
-    transition:opacity .3s ease, transform .2s ease; box-shadow:var(--shadow);
-  }
-  .totop.show{opacity:1; pointer-events:auto;}
-  .totop:hover{transform:translateY(-3px);}
-
-  @media (max-width: 860px){
-    .nav-links{display:none;}
-    .menu-toggle{display:block;}
-    .about-grid{grid-template-columns:1fr; gap:60px;}
-    .ceo-photo-wrap{max-width:320px; margin:0 auto;}
-    .footer-grid{grid-template-columns:1fr 1fr; gap:30px;}
-    .feat-grid{grid-template-columns:1fr 1fr;}
-    .test-grid{grid-template-columns:1fr;}
-    .qv-modal{grid-template-columns:1fr;}
-    .qv-modal img{min-height:240px;}
-  }
-  @media (max-width: 480px){
-    .footer-grid{grid-template-columns:1fr;}
-    .grid{grid-template-columns:repeat(auto-fill, minmax(150px,1fr)); gap:14px;}
-    .cat-strip{top:60px;}
-    .feat-grid{grid-template-columns:1fr;}
-  }
-  :focus-visible{outline:2px solid var(--gold); outline-offset:2px;}
-</style>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,500;1,600&family=Jost:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>*,:after,:before{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgba(59,130,246,.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }::backdrop{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgba(59,130,246,.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }/*! tailwindcss v3.4.19 | MIT License | https://tailwindcss.com*/*,:after,:before{box-sizing:border-box;border:0 solid #e5e7eb}:after,:before{--tw-content:""}:host,html{line-height:1.5;-webkit-text-size-adjust:100%;-moz-tab-size:4;-o-tab-size:4;tab-size:4;font-family:Jost,sans-serif;font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent}body{margin:0;line-height:inherit}hr{height:0;color:inherit;border-top-width:1px}abbr:where([title]){-webkit-text-decoration:underline dotted;text-decoration:underline dotted}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}a{color:inherit;text-decoration:inherit}b,strong{font-weight:bolder}code,kbd,pre,samp{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,Liberation Mono,Courier New,monospace;font-feature-settings:normal;font-variation-settings:normal;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}table{text-indent:0;border-color:inherit;border-collapse:collapse}button,input,optgroup,select,textarea{font-family:inherit;font-feature-settings:inherit;font-variation-settings:inherit;font-size:100%;font-weight:inherit;line-height:inherit;letter-spacing:inherit;color:inherit;margin:0;padding:0}button,select{text-transform:none}button,input:where([type=button]),input:where([type=reset]),input:where([type=submit]){-webkit-appearance:button;background-color:transparent;background-image:none}:-moz-focusring{outline:auto}:-moz-ui-invalid{box-shadow:none}progress{vertical-align:baseline}::-webkit-inner-spin-button,::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}summary{display:list-item}blockquote,dd,dl,figure,h1,h2,h3,h4,h5,h6,hr,p,pre{margin:0}fieldset{margin:0}fieldset,legend{padding:0}menu,ol,ul{list-style:none;margin:0;padding:0}dialog{padding:0}textarea{resize:vertical}input::-moz-placeholder,textarea::-moz-placeholder{opacity:1;color:#9ca3af}input::placeholder,textarea::placeholder{opacity:1;color:#9ca3af}[role=button],button{cursor:pointer}:disabled{cursor:default}audio,canvas,embed,iframe,img,object,svg,video{display:block;vertical-align:middle}img,video{max-width:100%;height:auto}[hidden]:where(:not([hidden=until-found])){display:none}.pointer-events-none{pointer-events:none}.fixed{position:fixed}.absolute{position:absolute}.relative{position:relative}.sticky{position:sticky}.inset-0{inset:0}.-bottom-4{bottom:-1rem}.-left-4{left:-1rem}.bottom-0{bottom:0}.bottom-5{bottom:1.25rem}.left-0{left:0}.left-2\.5{left:.625rem}.left-4{left:1rem}.left-5{left:1.25rem}.right-0{right:0}.right-4{right:1rem}.right-5{right:1.25rem}.top-0{top:0}.top-1\/2{top:50%}.top-2\.5{top:.625rem}.top-4{top:1rem}.z-10{z-index:10}.z-50{z-index:50}.z-\[110\]{z-index:110}.z-\[60\]{z-index:60}.z-\[90\]{z-index:90}.z-\[95\]{z-index:95}.col-span-full{grid-column:1/-1}.mx-1\.5{margin-left:.375rem;margin-right:.375rem}.mx-auto{margin-left:auto;margin-right:auto}.my-6{margin-top:1.5rem;margin-bottom:1.5rem}.mb-1\.5{margin-bottom:.375rem}.mb-10{margin-bottom:2.5rem}.mb-2{margin-bottom:.5rem}.mb-2\.5{margin-bottom:.625rem}.mb-3{margin-bottom:.75rem}.mb-3\.5{margin-bottom:.875rem}.mb-4{margin-bottom:1rem}.mb-5{margin-bottom:1.25rem}.mb-6{margin-bottom:1.5rem}.mb-7{margin-bottom:1.75rem}.mb-9{margin-bottom:2.25rem}.ml-auto{margin-left:auto}.mt-1{margin-top:.25rem}.mt-1\.5{margin-top:.375rem}.mt-11{margin-top:2.75rem}.mt-3\.5{margin-top:.875rem}.mt-6{margin-top:1.5rem}.mt-auto{margin-top:auto}.line-clamp-2{overflow:hidden;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2}.block{display:block}.flex{display:flex}.inline-flex{display:inline-flex}.grid{display:grid}.hidden{display:none}.aspect-\[4\/5\]{aspect-ratio:4/5}.h-10{height:2.5rem}.h-11{height:2.75rem}.h-16{height:4rem}.h-4{height:1rem}.h-6{height:1.5rem}.h-8{height:2rem}.h-9{height:2.25rem}.h-\[1\.5px\]{height:1.5px}.h-\[18px\]{height:18px}.h-\[88px\]{height:88px}.h-full{height:100%}.max-h-0{max-height:0}.max-h-\[88vh\]{max-height:88vh}.min-h-\[240px\]{min-height:240px}.w-10{width:2.5rem}.w-11{width:2.75rem}.w-16{width:4rem}.w-4{width:1rem}.w-6{width:1.5rem}.w-8{width:2rem}.w-9{width:2.25rem}.w-\[18px\]{width:18px}.w-\[70px\]{width:70px}.w-full{width:100%}.min-w-0{min-width:0}.max-w-2xl{max-width:42rem}.max-w-\[1320px\]{max-width:1320px}.max-w-\[280px\]{max-width:280px}.max-w-\[300px\]{max-width:300px}.max-w-\[420px\]{max-width:420px}.max-w-\[820px\]{max-width:820px}.max-w-lg{max-width:32rem}.max-w-md{max-width:28rem}.flex-1{flex:1 1 0%}.flex-none{flex:none}.-translate-x-full{--tw-translate-x:-100%}.-translate-x-full,.-translate-y-1\/2{transform:translate(var(--tw-translate-x),var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.-translate-y-1\/2{--tw-translate-y:-50%}.translate-x-full{--tw-translate-x:100%}.scale-100,.translate-x-full{transform:translate(var(--tw-translate-x),var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.scale-100{--tw-scale-x:1;--tw-scale-y:1}.scale-95{--tw-scale-x:.95;--tw-scale-y:.95}.scale-95,.transform{transform:translate(var(--tw-translate-x),var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.cursor-pointer{cursor:pointer}.list-none{list-style-type:none}.grid-cols-1{grid-template-columns:repeat(1,minmax(0,1fr))}.grid-cols-2{grid-template-columns:repeat(2,minmax(0,1fr))}.grid-cols-3{grid-template-columns:repeat(3,minmax(0,1fr))}.flex-col{flex-direction:column}.flex-wrap{flex-wrap:wrap}.items-end{align-items:flex-end}.items-center{align-items:center}.justify-center{justify-content:center}.justify-between{justify-content:space-between}.gap-1\.5{gap:.375rem}.gap-10{gap:2.5rem}.gap-14{gap:3.5rem}.gap-2{gap:.5rem}.gap-2\.5{gap:.625rem}.gap-3{gap:.75rem}.gap-3\.5{gap:.875rem}.gap-4{gap:1rem}.gap-5{gap:1.25rem}.gap-6{gap:1.5rem}.gap-9{gap:2.25rem}.gap-\[5px\]{gap:5px}.space-y-2\.5>:not([hidden])~:not([hidden]){--tw-space-y-reverse:0;margin-top:calc(.625rem*(1 - var(--tw-space-y-reverse)));margin-bottom:calc(.625rem*var(--tw-space-y-reverse))}.space-y-3>:not([hidden])~:not([hidden]){--tw-space-y-reverse:0;margin-top:calc(.75rem*(1 - var(--tw-space-y-reverse)));margin-bottom:calc(.75rem*var(--tw-space-y-reverse))}.overflow-auto{overflow:auto}.overflow-hidden{overflow:hidden}.overflow-x-auto{overflow-x:auto}.overflow-y-auto{overflow-y:auto}.whitespace-nowrap{white-space:nowrap}.rounded{border-radius:.25rem}.rounded-full{border-radius:9999px}.rounded-lg{border-radius:.5rem}.rounded-md{border-radius:.375rem}.rounded-sm{border-radius:.125rem}.border{border-width:1px}.border-2{border-width:2px}.border-b{border-bottom-width:1px}.border-l-2{border-left-width:2px}.border-t{border-top-width:1px}.border-none{border-style:none}.border-black\/10{border-color:rgba(0,0,0,.1)}.border-bone\/10{border-color:hsla(43,30%,95%,.1)}.border-bone\/20{border-color:hsla(43,30%,95%,.2)}.border-gold{--tw-border-opacity:1;border-color:rgb(199 154 62/var(--tw-border-opacity,1))}.border-gold\/20{border-color:rgba(199,154,62,.2)}.border-ink{--tw-border-opacity:1;border-color:rgb(14 13 12/var(--tw-border-opacity,1))}.border-line{--tw-border-opacity:1;border-color:rgb(231 228 221/var(--tw-border-opacity,1))}.bg-\[\#25D366\]{--tw-bg-opacity:1;background-color:rgb(37 211 102/var(--tw-bg-opacity,1))}.bg-gold{--tw-bg-opacity:1;background-color:rgb(199 154 62/var(--tw-bg-opacity,1))}.bg-ink{--tw-bg-opacity:1;background-color:rgb(14 13 12/var(--tw-bg-opacity,1))}.bg-ink\/55{background-color:rgba(14,13,12,.55)}.bg-ink\/80{background-color:rgba(14,13,12,.8)}.bg-ink\/90{background-color:rgba(14,13,12,.9)}.bg-mist{--tw-bg-opacity:1;background-color:rgb(244 243 240/var(--tw-bg-opacity,1))}.bg-paper{--tw-bg-opacity:1;background-color:rgb(255 255 255/var(--tw-bg-opacity,1))}.bg-paper\/95{background-color:hsla(0,0%,100%,.95)}.bg-gradient-to-b{background-image:linear-gradient(to bottom,var(--tw-gradient-stops))}.from-ink\/70{--tw-gradient-from:rgba(14,13,12,.7) var(--tw-gradient-from-position);--tw-gradient-to:rgba(14,13,12,0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from),var(--tw-gradient-to)}.via-ink\/85{--tw-gradient-to:rgba(14,13,12,0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from),rgba(14,13,12,.85) var(--tw-gradient-via-position),var(--tw-gradient-to)}.to-ink{--tw-gradient-to:#0e0d0c var(--tw-gradient-to-position)}.bg-cover{background-size:cover}.bg-\[center_30\%\]{background-position:center 30%}.object-contain{-o-object-fit:contain;object-fit:contain}.object-cover{-o-object-fit:cover;object-fit:cover}.p-3\.5{padding:.875rem}.p-6{padding:1.5rem}.p-8{padding:2rem}.px-2{padding-left:.5rem;padding-right:.5rem}.px-2\.5{padding-left:.625rem;padding-right:.625rem}.px-3{padding-left:.75rem;padding-right:.75rem}.px-3\.5{padding-left:.875rem;padding-right:.875rem}.px-4{padding-left:1rem;padding-right:1rem}.px-5{padding-left:1.25rem;padding-right:1.25rem}.px-6{padding-left:1.5rem;padding-right:1.5rem}.px-7{padding-left:1.75rem;padding-right:1.75rem}.py-1{padding-top:.25rem;padding-bottom:.25rem}.py-10{padding-top:2.5rem;padding-bottom:2.5rem}.py-14{padding-top:3.5rem;padding-bottom:3.5rem}.py-16{padding-top:4rem;padding-bottom:4rem}.py-2\.5{padding-top:.625rem;padding-bottom:.625rem}.py-3{padding-top:.75rem;padding-bottom:.75rem}.py-3\.5{padding-top:.875rem;padding-bottom:.875rem}.py-4{padding-top:1rem;padding-bottom:1rem}.pb-1{padding-bottom:.25rem}.pb-11{padding-bottom:2.75rem}.pb-3{padding-bottom:.75rem}.pb-4{padding-bottom:1rem}.pb-8{padding-bottom:2rem}.pb-9{padding-bottom:2.25rem}.pl-11{padding-left:2.75rem}.pl-3\.5{padding-left:.875rem}.pl-5{padding-left:1.25rem}.pr-4{padding-right:1rem}.pt-16{padding-top:4rem}.pt-4{padding-top:1rem}.pt-6{padding-top:1.5rem}.text-left{text-align:left}.text-center{text-align:center}.font-sans{font-family:Jost,sans-serif}.font-serif{font-family:Cormorant Garamond,serif}.text-2xl{font-size:1.5rem;line-height:2rem}.text-3xl{font-size:1.875rem;line-height:2.25rem}.text-\[10\.5px\]{font-size:10.5px}.text-\[10px\]{font-size:10px}.text-\[11\.5px\]{font-size:11.5px}.text-\[11px\]{font-size:11px}.text-\[12\.5px\]{font-size:12.5px}.text-\[12px\]{font-size:12px}.text-\[13\.5px\]{font-size:13.5px}.text-\[13px\]{font-size:13px}.text-\[15px\]{font-size:15px}.text-\[8px\]{font-size:8px}.text-\[9\.5px\]{font-size:9.5px}.text-\[9px\]{font-size:9px}.text-base{font-size:1rem;line-height:1.5rem}.text-lg{font-size:1.125rem;line-height:1.75rem}.text-sm{font-size:.875rem;line-height:1.25rem}.text-xl{font-size:1.25rem;line-height:1.75rem}.text-xs{font-size:.75rem;line-height:1rem}.font-bold{font-weight:700}.font-extrabold{font-weight:800}.font-medium{font-weight:500}.font-semibold{font-weight:600}.uppercase{text-transform:uppercase}.italic{font-style:italic}.not-italic{font-style:normal}.leading-\[1\.85\]{line-height:1.85}.leading-\[1\.8\]{line-height:1.8}.leading-none{line-height:1}.leading-relaxed{line-height:1.625}.leading-tight{line-height:1.25}.tracking-\[1\.5px\]{letter-spacing:1.5px}.tracking-\[2\.5px\]{letter-spacing:2.5px}.tracking-\[2px\]{letter-spacing:2px}.tracking-\[3px\]{letter-spacing:3px}.tracking-\[4px\]{letter-spacing:4px}.tracking-tight{letter-spacing:-.025em}.tracking-wide{letter-spacing:.025em}.text-bone{--tw-text-opacity:1;color:rgb(247 245 240/var(--tw-text-opacity,1))}.text-bone\/45{color:hsla(43,30%,95%,.45)}.text-bone\/60{color:hsla(43,30%,95%,.6)}.text-bone\/70{color:hsla(43,30%,95%,.7)}.text-bone\/75{color:hsla(43,30%,95%,.75)}.text-gold{--tw-text-opacity:1;color:rgb(199 154 62/var(--tw-text-opacity,1))}.text-gold\/50{color:rgba(199,154,62,.5)}.text-ink{--tw-text-opacity:1;color:rgb(14 13 12/var(--tw-text-opacity,1))}.text-ink2{--tw-text-opacity:1;color:rgb(58 54 47/var(--tw-text-opacity,1))}.text-ink2\/60{color:rgba(58,54,47,.6)}.text-white{--tw-text-opacity:1;color:rgb(255 255 255/var(--tw-text-opacity,1))}.underline{text-decoration-line:underline}.accent-gold{accent-color:#c79a3e}.opacity-0{opacity:0}.opacity-40{opacity:.4}.opacity-80{opacity:.8}.shadow-card{--tw-shadow:0 20px 45px rgba(0,0,0,.28);--tw-shadow-colored:0 20px 45px var(--tw-shadow-color)}.shadow-card,.shadow-lg2{box-shadow:var(--tw-ring-offset-shadow,0 0 #0000),var(--tw-ring-shadow,0 0 #0000),var(--tw-shadow)}.shadow-lg2{--tw-shadow:0 30px 70px rgba(0,0,0,.4);--tw-shadow-colored:0 30px 70px var(--tw-shadow-color)}.shadow-sm{--tw-shadow:0 1px 2px 0 rgba(0,0,0,.05);--tw-shadow-colored:0 1px 2px 0 var(--tw-shadow-color)}.shadow-sm,.shadow-soft{box-shadow:var(--tw-ring-offset-shadow,0 0 #0000),var(--tw-ring-shadow,0 0 #0000),var(--tw-shadow)}.shadow-soft{--tw-shadow:0 2px 14px rgba(0,0,0,.06);--tw-shadow-colored:0 2px 14px var(--tw-shadow-color)}.filter{filter:var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow)}.backdrop-blur{--tw-backdrop-blur:blur(8px);-webkit-backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia)}.transition-all{transition-property:all;transition-timing-function:cubic-bezier(.4,0,.2,1);transition-duration:.15s}.transition-colors{transition-property:color,background-color,border-color,text-decoration-color,fill,stroke;transition-timing-function:cubic-bezier(.4,0,.2,1);transition-duration:.15s}.transition-opacity{transition-property:opacity;transition-timing-function:cubic-bezier(.4,0,.2,1);transition-duration:.15s}.transition-transform{transition-property:transform;transition-timing-function:cubic-bezier(.4,0,.2,1);transition-duration:.15s}.duration-200{transition-duration:.2s}.duration-300{transition-duration:.3s}html{scroll-behavior:smooth}body{-webkit-font-smoothing:antialiased}::-moz-selection{background:#c79a3e;color:#0e0d0c}::selection{background:#c79a3e;color:#0e0d0c}.marquee-track{display:inline-flex;animation:scroll 32s linear infinite}@keyframes scroll{0%{transform:translateX(0)}to{transform:translateX(-50%)}}@media (prefers-reduced-motion:reduce){.marquee-track{animation:none}}#catNavScroll::-webkit-scrollbar,#tabRow::-webkit-scrollbar{display:none}.card-img-wrap img{transition:transform .5s ease}.card:hover .card-img-wrap img{transform:scale(1.06)}.quick-view-strip{transform:translateY(100%);transition:transform .3s ease}.card:hover .quick-view-strip{transform:translateY(0)}input:focus{outline:none}select{cursor:pointer}:focus-visible{outline:2px solid #c79a3e;outline-offset:2px}.line-clamp-2{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}.placeholder\:text-ink2\/50::-moz-placeholder{color:rgba(58,54,47,.5)}.placeholder\:text-ink2\/50::placeholder{color:rgba(58,54,47,.5)}.hover\:-translate-y-1:hover{--tw-translate-y:-0.25rem;transform:translate(var(--tw-translate-x),var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.hover\:border-gold:hover{--tw-border-opacity:1;border-color:rgb(199 154 62/var(--tw-border-opacity,1))}.hover\:bg-\[\#1ebe5a\]:hover{--tw-bg-opacity:1;background-color:rgb(30 190 90/var(--tw-bg-opacity,1))}.hover\:bg-black\/10:hover{background-color:rgba(0,0,0,.1)}.hover\:bg-charcoal:hover{--tw-bg-opacity:1;background-color:rgb(28 26 23/var(--tw-bg-opacity,1))}.hover\:bg-goldbright:hover{--tw-bg-opacity:1;background-color:rgb(228 193 119/var(--tw-bg-opacity,1))}.hover\:bg-ink:hover{--tw-bg-opacity:1;background-color:rgb(14 13 12/var(--tw-bg-opacity,1))}.hover\:text-bone:hover{--tw-text-opacity:1;color:rgb(247 245 240/var(--tw-text-opacity,1))}.hover\:text-gold:hover{--tw-text-opacity:1;color:rgb(199 154 62/var(--tw-text-opacity,1))}.hover\:underline:hover{text-decoration-line:underline}.hover\:opacity-90:hover{opacity:.9}.hover\:shadow-soft:hover{--tw-shadow:0 2px 14px rgba(0,0,0,.06);--tw-shadow-colored:0 2px 14px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow,0 0 #0000),var(--tw-ring-shadow,0 0 #0000),var(--tw-shadow)}.focus\:border-gold:focus,.group:hover .group-hover\:border-gold{--tw-border-opacity:1;border-color:rgb(199 154 62/var(--tw-border-opacity,1))}.group:hover .group-hover\:text-gold{--tw-text-opacity:1;color:rgb(199 154 62/var(--tw-text-opacity,1))}.dark\:block:is(.dark *){display:block}.dark\:hidden:is(.dark *){display:none}.dark\:border-bone:is(.dark *){--tw-border-opacity:1;border-color:rgb(247 245 240/var(--tw-border-opacity,1))}.dark\:border-gold:is(.dark *){--tw-border-opacity:1;border-color:rgb(199 154 62/var(--tw-border-opacity,1))}.dark\:border-white\/10:is(.dark *){border-color:hsla(0,0%,100%,.1)}.dark\:border-white\/15:is(.dark *){border-color:hsla(0,0%,100%,.15)}.dark\:border-white\/20:is(.dark *){border-color:hsla(0,0%,100%,.2)}.dark\:bg-black\/20:is(.dark *){background-color:rgba(0,0,0,.2)}.dark\:bg-bone:is(.dark *){--tw-bg-opacity:1;background-color:rgb(247 245 240/var(--tw-bg-opacity,1))}.dark\:bg-charcoal:is(.dark *){--tw-bg-opacity:1;background-color:rgb(28 26 23/var(--tw-bg-opacity,1))}.dark\:bg-gold:is(.dark *){--tw-bg-opacity:1;background-color:rgb(199 154 62/var(--tw-bg-opacity,1))}.dark\:bg-ink:is(.dark *){--tw-bg-opacity:1;background-color:rgb(14 13 12/var(--tw-bg-opacity,1))}.dark\:bg-ink\/95:is(.dark *){background-color:rgba(14,13,12,.95)}.dark\:text-bone:is(.dark *){--tw-text-opacity:1;color:rgb(247 245 240/var(--tw-text-opacity,1))}.dark\:text-bone\/40:is(.dark *){color:hsla(43,30%,95%,.4)}.dark\:text-bone\/50:is(.dark *){color:hsla(43,30%,95%,.5)}.dark\:text-bone\/60:is(.dark *){color:hsla(43,30%,95%,.6)}.dark\:text-bone\/70:is(.dark *){color:hsla(43,30%,95%,.7)}.dark\:text-gold:is(.dark *){--tw-text-opacity:1;color:rgb(199 154 62/var(--tw-text-opacity,1))}.dark\:text-ink:is(.dark *){--tw-text-opacity:1;color:rgb(14 13 12/var(--tw-text-opacity,1))}.dark\:placeholder\:text-bone\/30:is(.dark *)::-moz-placeholder{color:hsla(43,30%,95%,.3)}.dark\:placeholder\:text-bone\/30:is(.dark *)::placeholder{color:hsla(43,30%,95%,.3)}.dark\:hover\:border-gold:hover:is(.dark *){--tw-border-opacity:1;border-color:rgb(199 154 62/var(--tw-border-opacity,1))}.dark\:hover\:bg-bone:hover:is(.dark *){--tw-bg-opacity:1;background-color:rgb(247 245 240/var(--tw-bg-opacity,1))}.dark\:hover\:bg-gold:hover:is(.dark *){--tw-bg-opacity:1;background-color:rgb(199 154 62/var(--tw-bg-opacity,1))}.dark\:hover\:text-ink:hover:is(.dark *){--tw-text-opacity:1;color:rgb(14 13 12/var(--tw-text-opacity,1))}@media (min-width:640px){.sm\:ml-0{margin-left:0}.sm\:inline{display:inline}.sm\:flex{display:flex}.sm\:grid-cols-5{grid-template-columns:repeat(5,minmax(0,1fr))}}@media (min-width:768px){.md\:col-span-1{grid-column:span 1/span 1}.md\:ml-0{margin-left:0}.md\:inline{display:inline}.md\:flex{display:flex}.md\:hidden{display:none}.md\:h-20{height:5rem}.md\:min-h-\[320px\]{min-height:320px}.md\:w-20{width:5rem}.md\:max-w-none{max-width:none}.md\:grid-cols-2{grid-template-columns:repeat(2,minmax(0,1fr))}.md\:grid-cols-3{grid-template-columns:repeat(3,minmax(0,1fr))}.md\:grid-cols-4{grid-template-columns:repeat(4,minmax(0,1fr))}.md\:gap-2\.5{gap:.625rem}.md\:gap-6{gap:1.5rem}.md\:gap-7{gap:1.75rem}.md\:p-4{padding:1rem}.md\:p-9{padding:2.25rem}.md\:py-16{padding-top:4rem;padding-bottom:4rem}.md\:py-20{padding-top:5rem;padding-bottom:5rem}.md\:text-5xl{font-size:3rem;line-height:1}.md\:text-\[15px\]{font-size:15px}.md\:text-\[32px\]{font-size:32px}.md\:text-xs{font-size:.75rem;line-height:1rem}}@media (min-width:1024px){.lg\:sticky{position:sticky}.lg\:top-\[132px\]{top:132px}.lg\:w-60{width:15rem}.lg\:flex-row{flex-direction:row}}</style>
 </head>
-<body>
+<body class="bg-paper text-ink dark:bg-ink dark:text-bone font-sans transition-colors duration-300">
 
-<div class="marquee"><div class="marquee__track" id="marqueeTrack"></div></div>
-
-<header>
-  <div class="container nav">
-    <div class="brand">
-      <img src="assets/logo.png" alt="Bliss Bee LuxuryWears logo">
-      <div class="brand-text"><b>Bliss Bee</b><small>Luxury Wears</small></div>
-    </div>
-    <ul class="nav-links">
-      <li><a href="#shop">Shop</a></li>
-      <li><a href="#about">About</a></li>
-      <li><a href="#testimonials">Reviews</a></li>
-      <li><a href="#contact">Contact</a></li>
+<!-- ============ UTILITY BAR ============ -->
+<div class="bg-mist dark:bg-charcoal border-b border-line dark:border-white/10 text-[11px]">
+  <div class="max-w-[1320px] mx-auto px-5 h-9 flex items-center justify-between">
+    <ul class="hidden sm:flex items-center gap-5 uppercase tracking-wide text-ink2 dark:text-bone/60 list-none">
+      <li><a href="#about" class="hover:text-gold transition-colors">About</a></li>
+      <li><a href="#reviews" class="hover:text-gold transition-colors">Reviews</a></li>
+      <li><a href="#faq" class="hover:text-gold transition-colors">FAQ</a></li>
+      <li><a href="#contact" class="hover:text-gold transition-colors">Contact</a></li>
     </ul>
-    <div class="nav-actions">
-      <button class="icon-btn" id="searchToggle" aria-label="Search">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
-      </button>
-      <button class="cart-btn" id="cartOpenBtn">Cart <span class="cart-count" id="cartCount">0</span></button>
-      <button class="menu-toggle" id="menuToggle" aria-label="Menu">&#9776;</button>
+    <div class="flex items-center gap-4 uppercase tracking-wide text-ink2 dark:text-bone/60 ml-auto sm:ml-0">
+      <span class="hidden md:inline">Uyo, Nigeria</span>
+      <a href="https://instagram.com/blissbeeventures" target="_blank" rel="noopener" aria-label="Instagram" class="hover:text-gold transition-colors">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg>
+      </a>
+      <a id="utilWhatsapp" href="#" target="_blank" rel="noopener" aria-label="WhatsApp" class="hover:text-gold transition-colors">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 11.5a8.5 8.5 0 0 1-12.4 7.5L3 20l1.1-5.5A8.5 8.5 0 1 1 21 11.5z"/></svg>
+      </a>
     </div>
   </div>
-  <div class="search-bar" id="searchBar">
-    <div class="container search-inner">
-      <input type="text" id="searchInput" placeholder="Search hoodies, denim, dresses...">
-      <button id="searchClose">Close</button>
-    </div>
-  </div>
-</header>
-
-<section class="hero">
-  <div class="hero-bg" style="background-image:url('assets/brand/hero-bg.jpg');"></div>
-  <div class="hero-scrim"></div>
-  <div class="container hero-content">
-    <div class="hero-eyebrow">Uyo &middot; Nigeria</div>
-    <h1>Wear the<br><em>Sting of Luxury</em></h1>
-    <p>Curated streetwear and boutique pieces, handpicked in Uyo. Hoodies, denim, jerseys and statement pieces &mdash; ordered straight to WhatsApp.</p>
-    <div class="hero-cta">
-      <a href="#shop" class="btn btn-gold">Shop the Collection</a>
-      <a href="#contact" class="btn btn-ghost">Visit the Store</a>
-    </div>
-    <div class="hero-stats">
-      <div><b id="statProductsHero">0</b><span>Pieces Live</span></div>
-      <div><b>100%</b><span>Verified Orders</span></div>
-      <div><b>Uyo</b><span>Based &amp; Local</span></div>
-    </div>
-  </div>
-</section>
-
-<section class="features">
-  <div class="container feat-grid">
-    <div class="feat">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2 3 6v6c0 5 4 8 9 10 5-2 9-5 9-10V6z"/><path d="m9 12 2 2 4-4"/></svg>
-      <div><b>Verified Quality</b><span>Every piece checked before it ships</span></div>
-    </div>
-    <div class="feat">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 11.5a8.5 8.5 0 0 1-12.4 7.5L3 20l1.1-5.5A8.5 8.5 0 1 1 21 11.5z"/></svg>
-      <div><b>Order on WhatsApp</b><span>Fast replies, real conversations</span></div>
-    </div>
-    <div class="feat">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="6" width="18" height="13" rx="2"/><path d="M3 10h18M7 15h4"/></svg>
-      <div><b>Secure Payments</b><span>Moniepoint transfer, confirmed directly</span></div>
-    </div>
-    <div class="feat">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>
-      <div><b>Based in Uyo</b><span>88 Ekpri Nsukara Road</span></div>
-    </div>
-  </div>
-</section>
-
-<div class="cat-strip">
-  <div class="container"><div class="cat-scroll" id="catScroll"></div></div>
 </div>
 
-<section class="section" id="shop">
-  <div class="container">
-    <div class="section-head reveal">
-      <h2 id="shopTitle">All Pieces</h2>
-      <span id="shopCount">0 items</span>
+<!-- ============ STICKY HEADER + CATEGORY NAV ============ -->
+<div class="sticky top-0 z-50 shadow-sm">
+  <header class="bg-paper/95 dark:bg-ink/95 backdrop-blur border-b border-line dark:border-white/10">
+    <div class="max-w-[1320px] mx-auto px-5 py-3 flex items-center gap-4 md:gap-6">
+      <button id="menuToggle" aria-label="Open menu" aria-expanded="false" class="md:hidden w-9 h-9 flex-none flex flex-col items-center justify-center gap-[5px] border border-line dark:border-white/15 rounded-full">
+        <span id="menuBar1" class="block w-4 h-[1.5px] bg-ink dark:bg-bone transition-transform duration-200"></span>
+        <span id="menuBar2" class="block w-4 h-[1.5px] bg-ink dark:bg-bone transition-opacity duration-200"></span>
+        <span id="menuBar3" class="block w-4 h-[1.5px] bg-ink dark:bg-bone transition-transform duration-200"></span>
+      </button>
+
+      <a href="#" class="flex items-center gap-2.5 flex-none">
+        <img src="assets/logo.png" alt="Bliss Bee LuxuryWears logo" class="h-10 w-10 object-contain">
+        <div class="hidden xs:flex flex-col leading-none">
+          <b class="font-serif italic font-bold text-lg">Bliss Bee</b>
+          <small class="text-[8px] tracking-[3px] uppercase text-gold">Luxury Wears</small>
+        </div>
+      </a>
+
+      <div class="hidden md:flex flex-1 max-w-lg relative">
+        <svg class="absolute left-4 top-1/2 -translate-y-1/2 text-ink2/60 dark:text-bone/40" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+        <input type="text" id="searchInput" placeholder="Search hoodies, denim, dresses..." class="w-full bg-mist dark:bg-charcoal border border-line dark:border-white/10 rounded-full py-2.5 pl-11 pr-4 text-sm focus:border-gold placeholder:text-ink2/50 dark:placeholder:text-bone/30">
+      </div>
+
+      <div class="flex items-center gap-1.5 md:gap-2.5 ml-auto md:ml-0 flex-none">
+        <button id="searchToggle" aria-label="Search" class="md:hidden w-9 h-9 flex items-center justify-center border border-line dark:border-white/15 rounded-full">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+        </button>
+        <a id="headerWhatsapp" href="#" target="_blank" rel="noopener" aria-label="Chat on WhatsApp" class="hidden sm:flex w-9 h-9 items-center justify-center border border-line dark:border-white/15 rounded-full hover:border-gold hover:text-gold transition-colors">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 11.5a8.5 8.5 0 0 1-12.4 7.5L3 20l1.1-5.5A8.5 8.5 0 1 1 21 11.5z"/></svg>
+        </a>
+        <button id="themeToggle" aria-label="Toggle dark mode" class="w-9 h-9 flex items-center justify-center border border-line dark:border-white/15 rounded-full hover:border-gold hover:text-gold transition-colors">
+          <svg class="block dark:hidden" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2M12 20v2M4.2 4.2l1.4 1.4M18.4 18.4l1.4 1.4M2 12h2M20 12h2M4.2 19.8l1.4-1.4M18.4 5.6l1.4-1.4"/></svg>
+          <svg class="hidden dark:block" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z"/></svg>
+        </button>
+        <button id="cartOpenBtn" class="relative flex items-center gap-2 bg-ink dark:bg-gold hover:opacity-90 text-bone dark:text-ink px-3.5 md:px-4.5 py-2.5 rounded-full text-[12px] font-semibold tracking-wide uppercase transition-opacity">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="9" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+          <span class="hidden sm:inline">Cart</span>
+          <span id="cartCount" class="bg-gold dark:bg-ink text-ink dark:text-gold font-bold rounded-full w-[18px] h-[18px] text-[10.5px] flex items-center justify-center">0</span>
+        </button>
+      </div>
     </div>
-    <div class="grid" id="productGrid"></div>
-    <div class="load-more-wrap" id="loadMoreWrap" style="display:none;">
-      <button class="btn btn-gold" id="loadMoreBtn" style="color:var(--ink); border-color:var(--ink);">Show More</button>
+
+    <div id="mobileSearchBar" class="md:hidden max-h-0 overflow-hidden transition-all duration-300">
+      <div class="px-5 pb-3">
+        <input type="text" id="mobileSearchInput" placeholder="Search hoodies, denim, dresses..." class="w-full bg-mist dark:bg-charcoal border border-line dark:border-white/10 rounded-full py-2.5 px-4 text-sm focus:border-gold">
+      </div>
     </div>
+
+    <div id="mobileMenu" class="md:hidden max-h-0 overflow-hidden transition-all duration-300 border-t border-line dark:border-white/10">
+      <ul class="flex flex-col text-[13px] tracking-wide uppercase list-none px-5">
+        <li class="border-b border-line dark:border-white/10"><a href="#shop" class="block py-3.5">Shop</a></li>
+        <li class="border-b border-line dark:border-white/10"><a href="#about" class="block py-3.5">About</a></li>
+        <li class="border-b border-line dark:border-white/10"><a href="#reviews" class="block py-3.5">Reviews</a></li>
+        <li class="border-b border-line dark:border-white/10"><a href="#faq" class="block py-3.5">FAQ</a></li>
+        <li><a href="#contact" class="block py-3.5">Contact</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <nav class="bg-gold border-b border-black/10 overflow-hidden">
+    <div class="max-w-[1320px] mx-auto px-2">
+      <div id="catNavScroll" class="flex overflow-x-auto text-[12px] font-bold uppercase tracking-wide" style="scrollbar-width:none;"></div>
+    </div>
+  </nav>
+</div>
+
+<div class="bg-ink text-gold overflow-hidden whitespace-nowrap h-8 flex items-center border-b border-gold/20">
+  <div class="marquee-track inline-flex" id="marqueeTrack"></div>
+</div>
+
+<!-- ============ COMPACT HERO ============ -->
+<section class="relative bg-ink text-bone py-14 md:py-16 text-center overflow-hidden">
+  <div class="absolute inset-0 bg-cover bg-[center_30%] opacity-40" style="background-image:url('assets/brand/hero-bg.jpg');"></div>
+  <div class="absolute inset-0 bg-gradient-to-b from-ink/70 via-ink/85 to-ink"></div>
+  <div class="relative max-w-2xl mx-auto px-5">
+    <div class="text-[10px] tracking-[4px] uppercase text-gold mb-3">Uyo &middot; Nigeria</div>
+    <h1 class="font-serif italic font-semibold text-3xl md:text-5xl mb-3 leading-tight">Wear the <span class="not-italic font-bold text-gold">Sting of Luxury</span></h1>
+    <p class="text-bone/70 text-sm md:text-[15px] max-w-md mx-auto mb-7">Curated streetwear &amp; boutique pieces, handpicked in Uyo &mdash; ordered straight to WhatsApp.</p>
+    <a href="#shop" class="inline-flex items-center gap-2 px-7 py-3.5 text-[12px] tracking-[2px] uppercase rounded-full bg-gold text-ink font-bold hover:bg-goldbright transition-colors">Shop the Collection</a>
   </div>
 </section>
 
-<section class="section testimonials" id="testimonials">
-  <div class="container">
-    <div class="section-head reveal">
-      <h2>What Customers Say</h2>
-      <span>Real orders, real fits</span>
-    </div>
-    <div class="test-grid" id="testGrid"></div>
+<!-- ============ BREADCRUMB ============ -->
+<div class="border-b border-line dark:border-white/10">
+  <div class="max-w-[1320px] mx-auto px-5 py-3 text-[12px] text-ink2 dark:text-bone/50">
+    <a href="#" class="hover:text-gold transition-colors">Home</a>
+    <span class="mx-1.5">/</span>
+    <a href="#shop" class="hover:text-gold transition-colors">Shop</a>
+    <span class="mx-1.5">/</span>
+    <span id="breadcrumbCat" class="text-ink dark:text-bone font-medium">All</span>
   </div>
-</section>
+</div>
 
-<section class="about" id="about">
-  <div class="container about-grid">
-    <div class="ceo-photo-wrap reveal">
-      <img class="ceo-photo" src="assets/brand/ceo.jpg" alt="Founder of Bliss Bee LuxuryWears">
-      <div class="ceo-badge"><b>Blessing Etim</b><span>Founder &amp; CEO</span></div>
-    </div>
-    <div class="reveal">
-      <span class="eyebrow">Meet the Founder</span>
-      <h3>From Uyo, for the bold.</h3>
-      <p>Bliss Bee LuxuryWears started as a passion for pieces that don't blend in &mdash; premium hoodies, denim and statement streetwear, sourced and styled for people who want their fit to say something.</p>
-      <div class="ceo-quote">"Every bag we hand over carries the same promise &mdash; quality you can feel, and style that speaks before you do."</div>
-      <p>Every order is confirmed and handled personally, so you always know exactly what you're getting before you pay.</p>
-      <div class="about-stats">
-        <div><b id="statProducts">0</b><span>Pieces Live</span></div>
-        <div><b>100%</b><span>Verified Orders</span></div>
-        <div><b>Uyo</b><span>Based &amp; Local</span></div>
+<!-- ============ SHOP ============ -->
+<section id="shop" class="max-w-[1320px] mx-auto px-5 py-10">
+  <div class="flex items-end justify-between flex-wrap gap-3 mb-7">
+    <h2 id="shopTitle" class="text-2xl md:text-[32px] font-extrabold uppercase tracking-tight">Shop</h2>
+    <span id="shopCount" class="text-xs uppercase tracking-wide text-ink2 dark:text-bone/50">0 items</span>
+  </div>
+
+  <div class="flex gap-2 overflow-x-auto pb-1 mb-9" id="tabRow" style="scrollbar-width:none;"></div>
+
+  <div class="grid grid-cols-3 sm:grid-cols-5 gap-4 md:gap-7 mb-10 pb-9 border-b border-line dark:border-white/10" id="iconRow"></div>
+
+  <div class="flex flex-col lg:flex-row gap-9">
+    <aside class="lg:w-60 flex-none">
+      <div class="lg:sticky lg:top-[132px]">
+        <div class="flex items-center justify-between mb-4">
+          <b class="text-xs uppercase tracking-[2px]">Filters</b>
+          <button id="clearFilters" class="text-[11px] text-gold hover:underline">Clear all</button>
+        </div>
+        <div class="border-t border-line dark:border-white/10 pt-4">
+          <b class="block text-[11px] uppercase tracking-[2px] text-ink2 dark:text-bone/50 mb-3.5">Category</b>
+          <div id="filterList" class="space-y-3"></div>
+        </div>
+        <div class="border-t border-line dark:border-white/10 mt-6 pt-4">
+          <b class="block text-[11px] uppercase tracking-[2px] text-ink2 dark:text-bone/50 mb-3">Sort By</b>
+          <select id="sortSelect" class="w-full bg-mist dark:bg-charcoal border border-line dark:border-white/10 rounded-md px-3 py-2.5 text-sm focus:border-gold">
+            <option value="featured">Featured</option>
+            <option value="newest">Newest First</option>
+            <option value="name-asc">Name: A &rarr; Z</option>
+            <option value="name-desc">Name: Z &rarr; A</option>
+            <option value="price-asc">Price: Low to High</option>
+            <option value="price-desc">Price: High to Low</option>
+          </select>
+        </div>
+      </div>
+    </aside>
+
+    <div class="flex-1 min-w-0">
+      <div class="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6" id="productGrid"></div>
+      <div class="text-center mt-11 hidden" id="loadMoreWrap">
+        <button id="loadMoreBtn" class="inline-flex items-center gap-2 px-7 py-3.5 text-[12px] tracking-[2px] uppercase rounded-full border-2 border-ink dark:border-bone font-bold hover:bg-ink hover:text-bone dark:hover:bg-bone dark:hover:text-ink transition-colors">Show More</button>
       </div>
     </div>
   </div>
 </section>
 
-<section class="cta-strip">
-  <div class="container">
-    <h3>Get first access to new drops</h3>
-    <p>Message us on WhatsApp to join the Bliss Bee community &mdash; new arrivals, restocks and offers, first.</p>
-    <a href="https://wa.me/2348108758309" target="_blank" rel="noopener" class="btn btn-gold">Join on WhatsApp</a>
+<!-- ============ TESTIMONIALS ============ -->
+<section class="py-16 md:py-20 bg-mist dark:bg-charcoal" id="reviews">
+  <div class="max-w-[1320px] mx-auto px-5">
+    <div class="flex items-end justify-between flex-wrap gap-3 mb-9">
+      <h2 class="text-2xl md:text-[32px] font-extrabold uppercase tracking-tight">What Customers Say</h2>
+      <span class="text-xs uppercase tracking-wide text-ink2 dark:text-bone/50">Real orders, real fits</span>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6" id="testGrid"></div>
   </div>
 </section>
 
-<footer id="contact">
-  <div class="container">
-    <div class="footer-grid">
-      <div class="footer-brand">
-        <b>Bliss Bee LuxuryWears</b>
-        <p>Boutique streetwear &amp; luxury casual pieces, based in Uyo, Nigeria. DM or WhatsApp us to order &mdash; we reply fast.</p>
-        <div class="social-row">
-          <a href="https://instagram.com/blissbeeventures" target="_blank" rel="noopener" aria-label="Instagram">
+<!-- ============ ABOUT / CEO ============ -->
+<section class="py-16 md:py-20" id="about">
+  <div class="max-w-[1320px] mx-auto px-5 grid grid-cols-1 md:grid-cols-2 gap-14 items-center">
+    <div class="relative max-w-[300px] md:max-w-none mx-auto">
+      <img class="w-full aspect-[4/5] object-cover rounded-lg border border-line dark:border-white/10 shadow-soft" src="assets/brand/ceo.jpg" alt="Founder of Bliss Bee LuxuryWears">
+      <div class="absolute -bottom-4 -left-4 bg-gold text-ink px-4 py-3 rounded-md shadow-soft">
+        <b class="block text-base font-serif italic font-bold">Blessing Etim</b>
+        <span class="text-[9px] tracking-[2px] uppercase font-bold">Founder &amp; CEO</span>
+      </div>
+    </div>
+    <div>
+      <span class="block text-[11px] tracking-[3px] uppercase text-gold mb-3">Meet the Founder</span>
+      <h3 class="text-2xl md:text-[32px] font-extrabold uppercase tracking-tight mb-4">From Uyo, for the bold.</h3>
+      <p class="text-ink2 dark:text-bone/70 leading-[1.85] text-[15px] mb-4">Bliss Bee LuxuryWears started as a passion for pieces that don't blend in &mdash; premium hoodies, denim and statement streetwear, sourced and styled for people who want their fit to say something.</p>
+      <div class="border-l-2 border-gold pl-5 my-6 font-serif italic text-lg leading-relaxed">"Every bag we hand over carries the same promise &mdash; quality you can feel, and style that speaks before you do."</div>
+      <p class="text-ink2 dark:text-bone/70 leading-[1.85] text-[15px] mb-6">Every order is confirmed and handled personally, so you always know exactly what you're getting before you pay.</p>
+      <div class="flex gap-9 flex-wrap">
+        <div><b id="statProducts" class="block text-2xl font-extrabold text-gold">0</b><span class="text-[10.5px] tracking-[2px] uppercase text-ink2 dark:text-bone/50">Pieces Live</span></div>
+        <div><b class="block text-2xl font-extrabold text-gold">100%</b><span class="text-[10.5px] tracking-[2px] uppercase text-ink2 dark:text-bone/50">Verified Orders</span></div>
+        <div><b class="block text-2xl font-extrabold text-gold">Uyo</b><span class="text-[10.5px] tracking-[2px] uppercase text-ink2 dark:text-bone/50">Based &amp; Local</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section class="py-16 md:py-20 bg-mist dark:bg-charcoal" id="faq">
+  <div class="max-w-[820px] mx-auto px-5">
+    <div class="text-center mb-10">
+      <span class="block text-[11px] tracking-[3px] uppercase text-gold mb-3">Good to Know</span>
+      <h2 class="text-2xl md:text-[32px] font-extrabold uppercase tracking-tight">Frequently Asked Questions</h2>
+    </div>
+    <div class="space-y-3" id="faqList"></div>
+  </div>
+</section>
+
+<!-- ============ CTA ============ -->
+<section class="bg-gold text-ink py-14 text-center">
+  <div class="max-w-[1320px] mx-auto px-5">
+    <h3 class="text-2xl md:text-[32px] font-extrabold uppercase tracking-tight mb-2.5">Get First Access to New Drops</h3>
+    <p class="text-sm mb-6 opacity-80">Message us on WhatsApp to join the Bliss Bee community &mdash; new arrivals, restocks and offers, first.</p>
+    <a id="ctaWhatsapp" href="#" target="_blank" rel="noopener" class="inline-flex items-center gap-2 px-7 py-3.5 text-[12px] tracking-[2px] uppercase rounded-full bg-ink text-gold font-bold hover:bg-charcoal transition-colors">Join on WhatsApp</a>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="bg-ink text-bone pt-16 pb-8" id="contact">
+  <div class="max-w-[1320px] mx-auto px-5">
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-10 pb-11 border-b border-bone/10">
+      <div class="md:col-span-1">
+        <b class="font-serif italic text-2xl font-bold">Bliss Bee LuxuryWears</b>
+        <p class="text-bone/60 text-[13.5px] leading-relaxed mt-3.5 max-w-[280px]">Boutique streetwear &amp; luxury casual pieces, based in Uyo, Nigeria. DM or WhatsApp us to order &mdash; we reply fast.</p>
+        <div class="flex gap-2.5 mt-4.5">
+          <a href="https://instagram.com/blissbeeventures" target="_blank" rel="noopener" aria-label="Instagram" class="w-9 h-9 border border-bone/20 hover:border-gold hover:text-gold rounded-full flex items-center justify-center transition-colors">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg>
           </a>
-          <a href="https://wa.me/2348108758309" target="_blank" rel="noopener" aria-label="WhatsApp">
+          <a id="footWhatsappIcon" href="#" target="_blank" rel="noopener" aria-label="WhatsApp" class="w-9 h-9 border border-bone/20 hover:border-gold hover:text-gold rounded-full flex items-center justify-center transition-colors">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M21 11.5a8.5 8.5 0 0 1-12.4 7.5L3 20l1.1-5.5A8.5 8.5 0 1 1 21 11.5z"/></svg>
           </a>
-          <a href="mailto:etimblessing35@gmail.com" aria-label="Email">
+          <a href="mailto:etimblessing35@gmail.com" aria-label="Email" class="w-9 h-9 border border-bone/20 hover:border-gold hover:text-gold rounded-full flex items-center justify-center transition-colors">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
           </a>
         </div>
       </div>
-      <div><h4>Shop</h4><ul id="footerCats"></ul></div>
       <div>
-        <h4>Contact</h4>
-        <ul>
-          <li><a href="https://wa.me/2348108758309" target="_blank" rel="noopener">WhatsApp: 0808 583 0900*</a></li>
-          <li><a href="mailto:etimblessing35@gmail.com">etimblessing35@gmail.com</a></li>
-          <li><a href="https://instagram.com/blissbeeventures" target="_blank" rel="noopener">@blissbeeventures</a></li>
+        <h4 class="text-[11px] tracking-[2.5px] uppercase text-gold mb-4.5">Shop</h4>
+        <ul class="list-none space-y-2.5 text-[13.5px] text-bone/75" id="footerCats"></ul>
+      </div>
+      <div>
+        <h4 class="text-[11px] tracking-[2.5px] uppercase text-gold mb-4.5">Contact</h4>
+        <ul class="list-none space-y-2.5 text-[13.5px] text-bone/75">
+          <li><a id="footWhatsappLink" href="#" target="_blank" rel="noopener" class="hover:text-gold">WhatsApp: 0810 875 8309</a></li>
+          <li><a href="mailto:etimblessing35@gmail.com" class="hover:text-gold">etimblessing35@gmail.com</a></li>
+          <li><a href="https://instagram.com/blissbeeventures" target="_blank" rel="noopener" class="hover:text-gold">@blissbeeventures</a></li>
         </ul>
       </div>
       <div>
-        <h4>Visit</h4>
-        <ul>
+        <h4 class="text-[11px] tracking-[2.5px] uppercase text-gold mb-4.5">Visit</h4>
+        <ul class="list-none space-y-2.5 text-[13.5px] text-bone/75">
           <li>88 Ekpri Nsukara Road,<br>Uyo, Akwa Ibom</li>
-          <li style="margin-top:14px;">Payments: Moniepoint<br>Blessing Etim<br>8214782937</li>
+          <li class="mt-3.5">Payments: Moniepoint<br>Blessing Etim<br>8214782937</li>
         </ul>
       </div>
     </div>
-    <div class="foot-bottom container" style="padding-left:0;padding-right:0;">
+    <div class="pt-6 flex justify-between flex-wrap gap-2.5 text-xs text-bone/45">
       <span>&copy; <span id="year"></span> Bliss Bee LuxuryWears. All rights reserved.</span>
-      <span>*Please confirm this number &mdash; see note below.</span>
     </div>
   </div>
 </footer>
 
-<div class="overlay" id="overlay"></div>
-<div class="drawer" id="cartDrawer">
-  <div class="drawer-head"><h3>Your Bag</h3><button id="cartCloseBtn" aria-label="Close cart">&times;</button></div>
-  <div class="drawer-body" id="cartBody"></div>
-  <div class="drawer-foot" id="cartFoot" style="display:none;">
-    <div class="row"><span>Subtotal</span><b id="cartTotal">&#8358;0</b></div>
-    <div class="note">Prices confirmed on WhatsApp before payment. Payment via Moniepoint transfer to Blessing Etim &mdash; details sent after you confirm your order.</div>
-    <button class="checkout-btn" id="checkoutBtn">Checkout via WhatsApp</button>
+<!-- ============ CART DRAWER ============ -->
+<div class="fixed inset-0 bg-ink/55 opacity-0 pointer-events-none transition-opacity duration-300 z-[90]" id="overlay"></div>
+<div class="fixed top-0 right-0 h-full w-full max-w-[420px] bg-paper dark:bg-ink z-[95] translate-x-full transition-transform duration-300 flex flex-col shadow-lg2" id="cartDrawer">
+  <div class="flex items-center justify-between px-6 py-5.5 border-b border-line dark:border-white/10">
+    <h3 class="font-serif italic text-2xl font-bold">Your Bag</h3>
+    <button id="cartCloseBtn" aria-label="Close cart" class="text-2xl">&times;</button>
+  </div>
+  <div class="flex-1 overflow-y-auto px-6 py-4.5" id="cartBody"></div>
+  <div class="px-6 py-5.5 border-t border-line dark:border-white/10 hidden" id="cartFoot">
+    <div class="flex justify-between mb-4 text-sm"><span>Subtotal</span><b id="cartTotal" class="text-lg font-serif">&#8358;0</b></div>
+    <div class="text-[11.5px] text-ink2 dark:text-bone/50 mb-4 leading-relaxed">Prices confirmed on WhatsApp before payment. Payment via Moniepoint transfer to Blessing Etim &mdash; details sent after you confirm your order.</div>
+    <button id="checkoutBtn" class="w-full bg-[#25D366] hover:bg-[#1ebe5a] text-white border-none py-3.5 text-[13px] tracking-[2px] uppercase rounded-full flex items-center justify-center gap-2.5 font-semibold">Checkout via WhatsApp</button>
   </div>
 </div>
 
-<div class="qv-overlay" id="qvOverlay">
-  <div class="qv-modal" id="qvModal"></div>
+<!-- ============ QUICK VIEW ============ -->
+<div class="fixed inset-0 bg-ink/72 z-[110] opacity-0 pointer-events-none transition-opacity duration-300 flex items-center justify-center p-6" id="qvOverlay">
+  <div class="bg-paper dark:bg-ink max-w-[820px] w-full max-h-[88vh] overflow-auto grid grid-cols-1 md:grid-cols-2 shadow-lg2 relative scale-95 transition-transform duration-300 rounded-lg" id="qvModal"></div>
 </div>
 
-<button class="totop" id="toTop" aria-label="Back to top">&uarr;</button>
+<!-- ============ FLOATING WHATSAPP + BACK TO TOP ============ -->
+<a id="floatWhatsapp" href="#" target="_blank" rel="noopener" class="fixed bottom-5 left-5 z-[60] flex items-center gap-2 bg-[#25D366] hover:bg-[#1ebe5a] text-white pl-3.5 pr-4.5 py-3 rounded-full shadow-lg2 text-[13px] font-semibold transition-colors">
+  <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 11.5a8.5 8.5 0 0 1-12.4 7.5L3 20l1.1-5.5A8.5 8.5 0 1 1 21 11.5z"/></svg>
+  Chat with us!
+</a>
+<button id="toTop" aria-label="Back to top" class="fixed bottom-5 right-5 w-11 h-11 rounded-full bg-ink dark:bg-gold text-gold dark:text-ink border-none cursor-pointer z-[60] flex items-center justify-center text-lg opacity-0 pointer-events-none transition-all shadow-card">&uarr;</button>
 
 <script>
 const PRODUCTS = [{"id":"BB001","category":"hoodies","name":"Classic Fleece Hoodie","image":"assets/products/hoodies/1784053810839.jpg","price":0},{"id":"BB002","category":"hoodies","name":"Camo Hoodie","image":"assets/products/hoodies/1784053861417.jpg","price":0},{"id":"BB003","category":"hoodies","name":"Graphic Pullover Hoodie","image":"assets/products/hoodies/1784054088856.jpg","price":0},{"id":"BB004","category":"hoodies","name":"Leopard Print Hoodie","image":"assets/products/hoodies/1784054102726.jpg","price":0},{"id":"BB005","category":"hoodies","name":"Oversized Hoodie","image":"assets/products/hoodies/1784054111531.jpg","price":0},{"id":"BB006","category":"hoodies","name":"Signature Zip Hoodie","image":"assets/products/hoodies/1784054222245.jpg","price":0},{"id":"BB007","category":"hoodies","name":"Bold Print Hoodie","image":"assets/products/hoodies/1784054226927.jpg","price":0},{"id":"BB008","category":"hoodies","name":"Street Hoodie","image":"assets/products/hoodies/1784054345460.jpg","price":0},{"id":"BB009","category":"hoodies","name":"Heavyweight Hoodie","image":"assets/products/hoodies/1784054353278.jpg","price":0},{"id":"BB010","category":"hoodies","name":"Essential Hoodie","image":"assets/products/hoodies/1784054378807.jpg","price":0},{"id":"BB011","category":"jeans","name":"Cargo Denim Shorts","image":"assets/products/jeans/1784053756669.jpg","price":0},{"id":"BB012","category":"jeans","name":"Patchwork Denim","image":"assets/products/jeans/1784053758738.jpg","price":0},{"id":"BB013","category":"jeans","name":"Denim Overalls","image":"assets/products/jeans/1784053760677.jpg","price":0},{"id":"BB014","category":"jeans","name":"Light Wash Jeans","image":"assets/products/jeans/1784053762879.jpg","price":0},{"id":"BB015","category":"jeans","name":"Studded Denim","image":"assets/products/jeans/1784053770417.jpg","price":0},{"id":"BB016","category":"jeans","name":"Black Denim Shorts","image":"assets/products/jeans/1784053772708.jpg","price":0},{"id":"BB017","category":"jeans","name":"Vintage Wash Jeans","image":"assets/products/jeans/1784053784284.jpg","price":0},{"id":"BB018","category":"jeans","name":"Relaxed Fit Denim","image":"assets/products/jeans/1784053841714.jpg","price":0},{"id":"BB019","category":"jeans","name":"Faded Denim Shorts","image":"assets/products/jeans/1784053846793.jpg","price":0},{"id":"BB020","category":"jeans","name":"Ripped Denim Shorts","image":"assets/products/jeans/1784053890027.jpg","price":0},{"id":"BB021","category":"jeans","name":"Distressed Denim Shorts","image":"assets/products/jeans/1784053896543.jpg","price":0},{"id":"BB022","category":"jeans","name":"Bootcut Denim","image":"assets/products/jeans/1784053900358.jpg","price":0},{"id":"BB023","category":"jeans","name":"Baggy Denim","image":"assets/products/jeans/1784053921299.jpg","price":0},{"id":"BB024","category":"jeans","name":"Straight Leg Denim","image":"assets/products/jeans/1784054051759.jpg","price":0},{"id":"BB025","category":"jeans","name":"Washed Denim Shorts","image":"assets/products/jeans/1784054152780.jpg","price":0},{"id":"BB026","category":"jeans","name":"Boyfriend Fit Jeans","image":"assets/products/jeans/1784054256203.jpg","price":0},{"id":"BB027","category":"jeans","name":"Vintage Denim Shorts","image":"assets/products/jeans/1784054258308.jpg","price":0},{"id":"BB028","category":"jeans","name":"Stone Wash Jeans","image":"assets/products/jeans/1784054290538.jpg","price":0},{"id":"BB029","category":"jeans","name":"Flared Denim","image":"assets/products/jeans/1784054298479.jpg","price":0},{"id":"BB030","category":"jeans","name":"Classic Straight Jeans","image":"assets/products/jeans/1784054302583.jpg","price":0},{"id":"BB031","category":"jeans","name":"Slim Fit Denim","image":"assets/products/jeans/1784054304577.jpg","price":0},{"id":"BB032","category":"jeans","name":"Grey Wash Jeans","image":"assets/products/jeans/1784054340762.jpg","price":0},{"id":"BB033","category":"casual","name":"Chore Jacket","image":"assets/products/casual/1772723892352.jpg","price":0},{"id":"BB034","category":"casual","name":"Classic Polo Shirt","image":"assets/products/casual/1779313074285.jpg","price":0},{"id":"BB035","category":"casual","name":"Vintage Jersey","image":"assets/products/casual/1779508354180.jpg","price":0},{"id":"BB036","category":"casual","name":"Sweatpants","image":"assets/products/casual/1779508385180.jpg","price":0},{"id":"BB037","category":"casual","name":"Track Jacket","image":"assets/products/casual/1779508401926.jpg","price":0},{"id":"BB038","category":"casual","name":"Bliss Bee Signature Tee","image":"assets/products/casual/1779849234498.jpg","price":0},{"id":"BB039","category":"casual","name":"Two-Piece Set","image":"assets/products/casual/1784053754465.jpg","price":0},{"id":"BB040","category":"casual","name":"Colorblock Tee","image":"assets/products/casual/1784053765306.jpg","price":0},{"id":"BB041","category":"casual","name":"Knit Polo","image":"assets/products/casual/1784053767466.jpg","price":0},{"id":"BB042","category":"casual","name":"Checkered Joggers","image":"assets/products/casual/1784053774861.jpg","price":0},{"id":"BB043","category":"casual","name":"Button-Up Shirt","image":"assets/products/casual/1784053786656.jpg","price":0},{"id":"BB044","category":"casual","name":"Statement Shirt","image":"assets/products/casual/1784053788849.jpg","price":0},{"id":"BB045","category":"casual","name":"Cargo Shorts","image":"assets/products/casual/1784053791190.jpg","price":0},{"id":"BB046","category":"casual","name":"Relaxed Tank Top","image":"assets/products/casual/1784053793745.jpg","price":0},{"id":"BB047","category":"casual","name":"Wide Leg Trousers","image":"assets/products/casual/1784053795740.jpg","price":0},{"id":"BB048","category":"casual","name":"Puffer Vest","image":"assets/products/casual/1784053797769.jpg","price":0},{"id":"BB049","category":"casual","name":"Oversized Tee","image":"assets/products/casual/1784053799844.jpg","price":0},{"id":"BB050","category":"casual","name":"Bomber Jacket","image":"assets/products/casual/1784053802865.jpg","price":0},{"id":"BB051","category":"casual","name":"Racer Jacket","image":"assets/products/casual/1784053805996.jpg","price":0},{"id":"BB052","category":"casual","name":"Sweatshirt","image":"assets/products/casual/1784053808173.jpg","price":0},{"id":"BB053","category":"casual","name":"Striped Tee","image":"assets/products/casual/1784053812995.jpg","price":0},{"id":"BB054","category":"casual","name":"Cardigan","image":"assets/products/casual/1784053815064.jpg","price":0},{"id":"BB055","category":"casual","name":"Windbreaker","image":"assets/products/casual/1784053826698.jpg","price":0},{"id":"BB056","category":"casual","name":"Camo Shorts","image":"assets/products/casual/1784053831230.jpg","price":0},{"id":"BB057","category":"casual","name":"Boxy Fit Tee","image":"assets/products/casual/1784053833388.jpg","price":0},{"id":"BB058","category":"casual","name":"Retro Football Jersey","image":"assets/products/casual/1784053852573.jpg","price":0},{"id":"BB059","category":"casual","name":"Cropped Tee","image":"assets/products/casual/1784053855303.jpg","price":0},{"id":"BB060","category":"casual","name":"Athletic Shorts","image":"assets/products/casual/1784053857418.jpg","price":0},{"id":"BB061","category":"casual","name":"Matching Tracksuit Set","image":"assets/products/casual/1784053859482.jpg","price":0},{"id":"BB062","category":"casual","name":"Graphic Print Tee","image":"assets/products/casual/1784053863540.jpg","price":0},{"id":"BB063","category":"casual","name":"Chore Jacket II","image":"assets/products/casual/1784053865703.jpg","price":0},{"id":"BB064","category":"casual","name":"Classic Polo Shirt II","image":"assets/products/casual/1784053874172.jpg","price":0},{"id":"BB065","category":"casual","name":"Vintage Jersey II","image":"assets/products/casual/1784053876197.jpg","price":0},{"id":"BB066","category":"casual","name":"Sweatpants II","image":"assets/products/casual/1784053878299.jpg","price":0},{"id":"BB067","category":"casual","name":"Track Jacket II","image":"assets/products/casual/1784053884113.jpg","price":0},{"id":"BB068","category":"casual","name":"Bliss Bee Signature Tee II","image":"assets/products/casual/1784053886110.jpg","price":0},{"id":"BB069","category":"casual","name":"Two-Piece Set II","image":"assets/products/casual/1784053892220.jpg","price":0},{"id":"BB070","category":"casual","name":"Colorblock Tee II","image":"assets/products/casual/1784053894518.jpg","price":0},{"id":"BB071","category":"casual","name":"Knit Polo II","image":"assets/products/casual/1784053898466.jpg","price":0},{"id":"BB072","category":"casual","name":"Checkered Joggers II","image":"assets/products/casual/1784053923074.jpg","price":0},{"id":"BB073","category":"casual","name":"Button-Up Shirt II","image":"assets/products/casual/1784053936025.jpg","price":0},{"id":"BB074","category":"casual","name":"Statement Shirt II","image":"assets/products/casual/1784053939137.jpg","price":0},{"id":"BB075","category":"casual","name":"Cargo Shorts II","image":"assets/products/casual/1784054015529.jpg","price":0},{"id":"BB076","category":"casual","name":"Relaxed Tank Top II","image":"assets/products/casual/1784054019402.jpg","price":0},{"id":"BB077","category":"casual","name":"Wide Leg Trousers II","image":"assets/products/casual/1784054047559.jpg","price":0},{"id":"BB078","category":"casual","name":"Puffer Vest II","image":"assets/products/casual/1784054049812.jpg","price":0},{"id":"BB079","category":"casual","name":"Oversized Tee II","image":"assets/products/casual/1784054056249.jpg","price":0},{"id":"BB080","category":"casual","name":"Bomber Jacket II","image":"assets/products/casual/1784054071934.jpg","price":0},{"id":"BB081","category":"casual","name":"Racer Jacket II","image":"assets/products/casual/1784054074130.jpg","price":0},{"id":"BB082","category":"casual","name":"Sweatshirt II","image":"assets/products/casual/1784054078236.jpg","price":0},{"id":"BB083","category":"casual","name":"Striped Tee II","image":"assets/products/casual/1784054086864.jpg","price":0},{"id":"BB084","category":"casual","name":"Cardigan II","image":"assets/products/casual/1784054091113.jpg","price":0},{"id":"BB085","category":"casual","name":"Windbreaker II","image":"assets/products/casual/1784054100695.jpg","price":0},{"id":"BB086","category":"casual","name":"Camo Shorts II","image":"assets/products/casual/1784054104618.jpg","price":0},{"id":"BB087","category":"casual","name":"Boxy Fit Tee II","image":"assets/products/casual/1784054107174.jpg","price":0},{"id":"BB088","category":"casual","name":"Retro Football Jersey II","image":"assets/products/casual/1784054109332.jpg","price":0},{"id":"BB089","category":"casual","name":"Cropped Tee II","image":"assets/products/casual/1784054113442.jpg","price":0},{"id":"BB090","category":"casual","name":"Athletic Shorts II","image":"assets/products/casual/1784054115873.jpg","price":0},{"id":"BB091","category":"casual","name":"Matching Tracksuit Set II","image":"assets/products/casual/1784054118273.jpg","price":0},{"id":"BB092","category":"casual","name":"Graphic Print Tee II","image":"assets/products/casual/1784054150387.jpg","price":0},{"id":"BB093","category":"casual","name":"Chore Jacket III","image":"assets/products/casual/1784054154782.jpg","price":0},{"id":"BB094","category":"casual","name":"Classic Polo Shirt III","image":"assets/products/casual/1784054158260.jpg","price":0},{"id":"BB095","category":"casual","name":"Vintage Jersey III","image":"assets/products/casual/1784054160181.jpg","price":0},{"id":"BB096","category":"casual","name":"Sweatpants III","image":"assets/products/casual/1784054194406.jpg","price":0},{"id":"BB097","category":"casual","name":"Track Jacket III","image":"assets/products/casual/1784054205626.jpg","price":0},{"id":"BB098","category":"casual","name":"Bliss Bee Signature Tee III","image":"assets/products/casual/1784054208019.jpg","price":0},{"id":"BB099","category":"casual","name":"Two-Piece Set III","image":"assets/products/casual/1784054213260.jpg","price":0},{"id":"BB100","category":"casual","name":"Colorblock Tee III","image":"assets/products/casual/1784054216258.jpg","price":0},{"id":"BB101","category":"casual","name":"Knit Polo III","image":"assets/products/casual/1784054225118.jpg","price":0},{"id":"BB102","category":"casual","name":"Checkered Joggers III","image":"assets/products/casual/1784054228985.jpg","price":0},{"id":"BB103","category":"casual","name":"Button-Up Shirt III","image":"assets/products/casual/1784054234362.jpg","price":0},{"id":"BB104","category":"casual","name":"Statement Shirt III","image":"assets/products/casual/1784054249578.jpg","price":0},{"id":"BB105","category":"casual","name":"Cargo Shorts III","image":"assets/products/casual/1784054252086.jpg","price":0},{"id":"BB106","category":"casual","name":"Relaxed Tank Top III","image":"assets/products/casual/1784054254023.jpg","price":0},{"id":"BB107","category":"casual","name":"Wide Leg Trousers III","image":"assets/products/casual/1784054292597.jpg","price":0},{"id":"BB108","category":"casual","name":"Puffer Vest III","image":"assets/products/casual/1784054294612.jpg","price":0},{"id":"BB109","category":"casual","name":"Oversized Tee III","image":"assets/products/casual/1784054296578.jpg","price":0},{"id":"BB110","category":"casual","name":"Bomber Jacket III","image":"assets/products/casual/1784054300386.jpg","price":0},{"id":"BB111","category":"casual","name":"Racer Jacket III","image":"assets/products/casual/1784054308811.jpg","price":0},{"id":"BB112","category":"casual","name":"Sweatshirt III","image":"assets/products/casual/1784054336221.jpg","price":0},{"id":"BB113","category":"casual","name":"Striped Tee III","image":"assets/products/casual/1784054338612.jpg","price":0},{"id":"BB114","category":"casual","name":"Cardigan III","image":"assets/products/casual/1784054343172.jpg","price":0},{"id":"BB115","category":"casual","name":"Windbreaker III","image":"assets/products/casual/1784054355380.jpg","price":0},{"id":"BB116","category":"casual","name":"Camo Shorts III","image":"assets/products/casual/1784054357690.jpg","price":0},{"id":"BB117","category":"casual","name":"Boxy Fit Tee III","image":"assets/products/casual/1784054362382.jpg","price":0},{"id":"BB118","category":"casual","name":"Retro Football Jersey III","image":"assets/products/casual/1784054372678.jpg","price":0},{"id":"BB119","category":"casual","name":"Cropped Tee III","image":"assets/products/casual/1784054376142.jpg","price":0},{"id":"BB120","category":"casual","name":"Athletic Shorts III","image":"assets/products/casual/1784054447907.jpg","price":0},{"id":"BB121","category":"casual","name":"Matching Tracksuit Set III","image":"assets/products/casual/1784054449815.jpg","price":0},{"id":"BB122","category":"casual","name":"Graphic Print Tee III","image":"assets/products/casual/1784054454008.jpg","price":0},{"id":"BB123","category":"casual","name":"Chore Jacket III","image":"assets/products/casual/1784054456171.jpg","price":0},{"id":"BB124","category":"casual","name":"Classic Polo Shirt III","image":"assets/products/casual/1784054460202.jpg","price":0},{"id":"BB125","category":"casual","name":"Vintage Jersey III","image":"assets/products/casual/1784054500505.jpg","price":0},{"id":"BB126","category":"casual","name":"Sweatpants III","image":"assets/products/casual/1784054504421.jpg","price":0},{"id":"BB127","category":"casual","name":"Track Jacket III","image":"assets/products/casual/1784054508413.jpg","price":0},{"id":"BB128","category":"casual","name":"Bliss Bee Signature Tee III","image":"assets/products/casual/1784054510356.jpg","price":0},{"id":"BB129","category":"casual","name":"Two-Piece Set III","image":"assets/products/casual/1784054524026.jpg","price":0},{"id":"BB130","category":"casual","name":"Colorblock Tee III","image":"assets/products/casual/1784054538051.jpg","price":0},{"id":"BB131","category":"accessories","name":"Slide Sandals","image":"assets/products/accessories/1784053837680.jpg","price":0},{"id":"BB132","category":"accessories","name":"Watch & Belt Gift Set","image":"assets/products/accessories/1784053839790.jpg","price":0},{"id":"BB133","category":"accessories","name":"Woven Chain Necklace","image":"assets/products/accessories/1784053844741.jpg","price":0},{"id":"BB134","category":"accessories","name":"Leather Belt","image":"assets/products/accessories/1784053848607.jpg","price":0},{"id":"BB135","category":"accessories","name":"Classic Slides","image":"assets/products/accessories/1784053850511.jpg","price":0},{"id":"BB136","category":"accessories","name":"Statement Backpack","image":"assets/products/accessories/1784053881692.jpg","price":0},{"id":"BB137","category":"accessories","name":"Signature Duffel Bag","image":"assets/products/accessories/1784053978607.jpg","price":0},{"id":"BB138","category":"accessories","name":"Comfort Clogs","image":"assets/products/accessories/1784053981112.jpg","price":0},{"id":"BB139","category":"accessories","name":"Everyday Slides","image":"assets/products/accessories/1784054054076.jpg","price":0},{"id":"BB140","category":"accessories","name":"Crossbody Bag","image":"assets/products/accessories/1784054058701.jpg","price":0},{"id":"BB141","category":"accessories","name":"Luxury Perfume Set","image":"assets/products/accessories/1784054080451.jpg","price":0},{"id":"BB142","category":"accessories","name":"Layered Chain","image":"assets/products/accessories/1784054082834.jpg","price":0},{"id":"BB143","category":"accessories","name":"Weekender Bag","image":"assets/products/accessories/1784054084845.jpg","price":0},{"id":"BB144","category":"accessories","name":"Travel Duffel","image":"assets/products/accessories/1784054095864.jpg","price":0},{"id":"BB145","category":"accessories","name":"Slide Sandals II","image":"assets/products/accessories/1784054191543.jpg","price":0},{"id":"BB146","category":"accessories","name":"Watch & Belt Gift Set II","image":"assets/products/accessories/1784054351244.jpg","price":0},{"id":"BB147","category":"accessories","name":"Woven Chain Necklace II","image":"assets/products/accessories/1784054382140.jpg","price":0},{"id":"BB148","category":"accessories","name":"Leather Belt II","image":"assets/products/accessories/1784054399659.jpg","price":0},{"id":"BB149","category":"accessories","name":"Classic Slides II","image":"assets/products/accessories/1784054401926.jpg","price":0},{"id":"BB150","category":"accessories","name":"Statement Backpack II","image":"assets/products/accessories/1784054403892.jpg","price":0},{"id":"BB151","category":"accessories","name":"Signature Duffel Bag II","image":"assets/products/accessories/1784054406127.jpg","price":0},{"id":"BB152","category":"accessories","name":"Comfort Clogs II","image":"assets/products/accessories/1784054408646.jpg","price":0},{"id":"BB153","category":"accessories","name":"Everyday Slides II","image":"assets/products/accessories/1784054411722.jpg","price":0},{"id":"BB154","category":"accessories","name":"Crossbody Bag II","image":"assets/products/accessories/1784054415084.jpg","price":0},{"id":"BB155","category":"accessories","name":"Luxury Perfume Set II","image":"assets/products/accessories/1784054417459.jpg","price":0},{"id":"BB156","category":"accessories","name":"Layered Chain II","image":"assets/products/accessories/1784054422291.jpg","price":0},{"id":"BB157","category":"accessories","name":"Weekender Bag II","image":"assets/products/accessories/1784054425280.jpg","price":0},{"id":"BB158","category":"accessories","name":"Travel Duffel II","image":"assets/products/accessories/1784054428040.jpg","price":0},{"id":"BB159","category":"accessories","name":"Slide Sandals III","image":"assets/products/accessories/1784054430601.jpg","price":0},{"id":"BB160","category":"accessories","name":"Watch & Belt Gift Set III","image":"assets/products/accessories/1784054433390.jpg","price":0},{"id":"BB161","category":"accessories","name":"Woven Chain Necklace III","image":"assets/products/accessories/1784054435951.jpg","price":0},{"id":"BB162","category":"accessories","name":"Leather Belt III","image":"assets/products/accessories/1784054438225.jpg","price":0},{"id":"BB163","category":"accessories","name":"Classic Slides III","image":"assets/products/accessories/1784054440507.jpg","price":0},{"id":"BB164","category":"dresses","name":"Flowing Midi Dress","image":"assets/products/dresses/1784053835584.jpg","price":0},{"id":"BB165","category":"dresses","name":"Signature Bliss Dress","image":"assets/products/dresses/1784054513850.jpg","price":0}];
 
-const CATEGORY_LABELS = { all: "All Pieces", hoodies: "Hoodies", jeans: "Denim", casual: "Casual Wear", accessories: "Accessories", dresses: "Dresses" };
-const WHATSAPP_NUMBER = "2348085830900"; // TODO: confirm full number with client
+const CATEGORY_LABELS = { hoodies: "Hoodies", jeans: "Denim", casual: "Casual Wear", accessories: "Accessories", dresses: "Dresses" };
+const CATEGORY_ICONS = { hoodies: "assets/icons/hoodies.jpg", jeans: "assets/icons/jeans.jpg", casual: "assets/icons/casual.jpg", accessories: "assets/icons/accessories.jpg", dresses: "assets/icons/dresses.jpg" };
+const WHATSAPP_NUMBER = "2348108758309";
+const CATS = Array.from(new Set(PRODUCTS.map(p=>p.category)));
+const CAT_COUNTS = Object.fromEntries(CATS.map(c => [c, PRODUCTS.filter(p=>p.category===c).length]));
 
-let currentCategory = "all";
+let selectedCats = new Set();
 let searchQuery = "";
+let sortMode = "featured";
 let visibleCount = 12;
 let cart = [];
 
+// ---------- whatsapp links ----------
+const waJoinMsg = encodeURIComponent("Hi Bliss Bee LuxuryWears! I'd like to join your WhatsApp community for new drops and restocks.");
+const waHelloMsg = encodeURIComponent("Hi Bliss Bee LuxuryWears! I have a question about your pieces.");
+['utilWhatsapp','headerWhatsapp','footWhatsappIcon','footWhatsappLink'].forEach(id=>{
+  document.getElementById(id).href = `https://wa.me/${WHATSAPP_NUMBER}?text=${waHelloMsg}`;
+});
+document.getElementById('ctaWhatsapp').href = `https://wa.me/${WHATSAPP_NUMBER}?text=${waJoinMsg}`;
+document.getElementById('floatWhatsapp').href = `https://wa.me/${WHATSAPP_NUMBER}?text=${waHelloMsg}`;
+
 // ---------- marquee ----------
 const track = document.getElementById('marqueeTrack');
-for(let i=0;i<10;i++){ const s=document.createElement('span'); s.textContent='BLISS BEE LUXURYWEARS'; track.appendChild(s); }
+for(let i=0;i<10;i++){
+  const s=document.createElement('span');
+  s.className = 'text-[10.5px] tracking-[2.5px] uppercase px-6 inline-flex items-center gap-6';
+  s.innerHTML = 'ORDER DIRECT ON WHATSAPP &mdash; VERIFIED QUALITY &mdash; BASED IN UYO <span class="text-gold/50">&bull;</span>';
+  track.appendChild(s);
+}
 
-// ---------- category pills ----------
-const cats = ["all", ...Array.from(new Set(PRODUCTS.map(p=>p.category)))];
-const catScroll = document.getElementById('catScroll');
-const footerCats = document.getElementById('footerCats');
-cats.forEach(c=>{
-  const pill = document.createElement('button');
-  pill.className = 'pill' + (c==='all' ? ' active' : '');
-  pill.textContent = CATEGORY_LABELS[c] || c;
-  pill.onclick = ()=> setCategory(c);
-  catScroll.appendChild(pill);
-  if(c !== 'all'){
-    const li = document.createElement('li');
-    const a = document.createElement('a');
-    a.href = '#shop'; a.textContent = CATEGORY_LABELS[c] || c;
-    a.onclick = ()=> setCategory(c);
-    li.appendChild(a); footerCats.appendChild(li);
-  }
-});
-function setCategory(c){
-  currentCategory = c; visibleCount = 12;
-  document.querySelectorAll('.pill').forEach((p,i)=> p.classList.toggle('active', cats[i]===c));
-  document.getElementById('shopTitle').textContent = CATEGORY_LABELS[c] || c;
+// ---------- category nav bar ----------
+const catNav = document.getElementById('catNavScroll');
+function catNavBtnClass(active){
+  return 'flex-none px-4 py-3 whitespace-nowrap transition-colors ' + (active ? 'bg-ink text-gold' : 'text-ink hover:bg-black/10');
+}
+function buildCatNav(){
+  catNav.innerHTML = '';
+  const allBtn = document.createElement('button');
+  allBtn.className = catNavBtnClass(selectedCats.size===0);
+  allBtn.textContent = 'All';
+  allBtn.onclick = ()=> setCategories(new Set());
+  catNav.appendChild(allBtn);
+  CATS.forEach(c=>{
+    const b = document.createElement('button');
+    b.className = catNavBtnClass(selectedCats.size===1 && selectedCats.has(c));
+    b.textContent = CATEGORY_LABELS[c] || c;
+    b.onclick = ()=> setCategories(new Set([c]));
+    catNav.appendChild(b);
+  });
+}
+
+// ---------- tabs (mirrors nav, shown above grid) ----------
+const tabRow = document.getElementById('tabRow');
+function tabClass(active){
+  return 'flex-none px-5 py-2.5 rounded-full text-xs font-semibold uppercase tracking-wide border transition-colors ' +
+    (active ? 'bg-ink text-bone border-ink dark:bg-gold dark:text-ink dark:border-gold' : 'border-line dark:border-white/15 text-ink2 dark:text-bone/60 hover:border-gold hover:text-gold');
+}
+function buildTabs(){
+  tabRow.innerHTML = '';
+  const allBtn = document.createElement('button');
+  allBtn.className = tabClass(selectedCats.size===0);
+  allBtn.textContent = 'All';
+  allBtn.onclick = ()=> setCategories(new Set());
+  tabRow.appendChild(allBtn);
+  CATS.forEach(c=>{
+    const b = document.createElement('button');
+    b.className = tabClass(selectedCats.size===1 && selectedCats.has(c));
+    b.textContent = CATEGORY_LABELS[c] || c;
+    b.onclick = ()=> setCategories(new Set([c]));
+    tabRow.appendChild(b);
+  });
+}
+
+// ---------- category icon row ----------
+const iconRow = document.getElementById('iconRow');
+function buildIconRow(){
+  iconRow.innerHTML = '';
+  CATS.forEach(c=>{
+    const active = selectedCats.size===1 && selectedCats.has(c);
+    const wrap = document.createElement('button');
+    wrap.className = 'flex flex-col items-center gap-2.5 group';
+    wrap.onclick = ()=> setCategories(new Set([c]));
+    wrap.innerHTML = `
+      <span class="w-16 h-16 md:w-20 md:h-20 rounded-full overflow-hidden border-2 ${active ? 'border-gold' : 'border-line dark:border-white/15'} group-hover:border-gold transition-colors block">
+        <img src="${CATEGORY_ICONS[c]}" alt="${CATEGORY_LABELS[c]}" class="w-full h-full object-cover">
+      </span>
+      <span class="text-[11px] md:text-xs font-semibold uppercase tracking-wide ${active ? 'text-gold' : ''}">${CATEGORY_LABELS[c]}</span>
+    `;
+    iconRow.appendChild(wrap);
+  });
+}
+
+// ---------- sidebar filter checkboxes ----------
+const filterList = document.getElementById('filterList');
+function buildFilterList(){
+  filterList.innerHTML = '';
+  CATS.forEach(c=>{
+    const id = 'filter_' + c;
+    const row = document.createElement('label');
+    row.className = 'flex items-center justify-between text-sm cursor-pointer group';
+    row.innerHTML = `
+      <span class="flex items-center gap-2.5">
+        <input type="checkbox" id="${id}" class="w-4 h-4 accent-gold rounded cursor-pointer" ${selectedCats.has(c) ? 'checked' : ''}>
+        <span class="group-hover:text-gold transition-colors">${CATEGORY_LABELS[c]}</span>
+      </span>
+      <span class="text-ink2 dark:text-bone/40 text-xs">${CAT_COUNTS[c]}</span>
+    `;
+    row.querySelector('input').onchange = (e)=>{
+      const next = new Set(selectedCats);
+      if(e.target.checked) next.add(c); else next.delete(c);
+      setCategories(next);
+    };
+    filterList.appendChild(row);
+  });
+}
+document.getElementById('clearFilters').onclick = ()=> setCategories(new Set());
+
+function setCategories(next){
+  selectedCats = next;
+  visibleCount = 12;
+  buildCatNav(); buildTabs(); buildIconRow(); buildFilterList();
+  const label = selectedCats.size===1 ? CATEGORY_LABELS[[...selectedCats][0]] : 'All';
+  document.getElementById('shopTitle').textContent = selectedCats.size===1 ? label : 'Shop';
+  document.getElementById('breadcrumbCat').textContent = label;
   renderGrid();
-  document.getElementById('shop').scrollIntoView({behavior:'smooth', block:'start'});
 }
 
 // ---------- search ----------
 const searchToggle = document.getElementById('searchToggle');
-const searchBar = document.getElementById('searchBar');
+const mobileSearchBar = document.getElementById('mobileSearchBar');
 const searchInput = document.getElementById('searchInput');
-searchToggle.onclick = ()=>{ searchBar.classList.toggle('open'); if(searchBar.classList.contains('open')) searchInput.focus(); };
-document.getElementById('searchClose').onclick = ()=> searchBar.classList.remove('open');
-searchInput.oninput = (e)=>{ searchQuery = e.target.value.toLowerCase().trim(); visibleCount = 12; renderGrid(); };
+const mobileSearchInput = document.getElementById('mobileSearchInput');
+let mSearchOpen = false;
+searchToggle.onclick = ()=>{
+  mSearchOpen = !mSearchOpen;
+  mobileSearchBar.style.maxHeight = mSearchOpen ? '70px' : '0px';
+  if(mSearchOpen) mobileSearchInput.focus();
+};
+function onSearchInput(e){
+  searchQuery = e.target.value.toLowerCase().trim();
+  searchInput.value = e.target.value; mobileSearchInput.value = e.target.value;
+  visibleCount = 12; renderGrid();
+}
+searchInput.oninput = onSearchInput;
+mobileSearchInput.oninput = onSearchInput;
+
+// ---------- sort ----------
+document.getElementById('sortSelect').onchange = (e)=>{ sortMode = e.target.value; visibleCount = 12; renderGrid(); };
+
+// ---------- mobile menu ----------
+const menuToggle = document.getElementById('menuToggle');
+const mobileMenu = document.getElementById('mobileMenu');
+const menuBar1 = document.getElementById('menuBar1');
+const menuBar2 = document.getElementById('menuBar2');
+const menuBar3 = document.getElementById('menuBar3');
+let menuOpen = false;
+function setMenu(open){
+  menuOpen = open;
+  mobileMenu.style.maxHeight = open ? mobileMenu.scrollHeight + 'px' : '0px';
+  menuToggle.setAttribute('aria-expanded', String(open));
+  menuBar1.style.transform = open ? 'translateY(6.5px) rotate(45deg)' : 'none';
+  menuBar2.style.opacity = open ? '0' : '1';
+  menuBar3.style.transform = open ? 'translateY(-6.5px) rotate(-45deg)' : 'none';
+  if(open){ mSearchOpen = false; mobileSearchBar.style.maxHeight = '0px'; }
+}
+menuToggle.onclick = ()=> setMenu(!menuOpen);
+mobileMenu.querySelectorAll('a').forEach(a=> a.onclick = ()=> setMenu(false));
+
+// ---------- dark mode ----------
+document.getElementById('themeToggle').onclick = ()=>{
+  document.documentElement.classList.toggle('dark');
+};
 
 // ---------- grid ----------
 function getFiltered(){
-  return PRODUCTS.filter(p=>{
-    const catMatch = currentCategory==='all' || p.category===currentCategory;
+  let items = PRODUCTS.filter(p=>{
+    const catMatch = selectedCats.size===0 || selectedCats.has(p.category);
     const searchMatch = !searchQuery || p.name.toLowerCase().includes(searchQuery) || (CATEGORY_LABELS[p.category]||'').toLowerCase().includes(searchQuery);
     return catMatch && searchMatch;
   });
+  const withIdx = items.map(p => ({p, idx: PRODUCTS.indexOf(p)}));
+  switch(sortMode){
+    case 'newest': withIdx.sort((a,b)=> b.idx - a.idx); break;
+    case 'name-asc': withIdx.sort((a,b)=> a.p.name.localeCompare(b.p.name)); break;
+    case 'name-desc': withIdx.sort((a,b)=> b.p.name.localeCompare(a.p.name)); break;
+    case 'price-asc': withIdx.sort((a,b)=> (a.p.price||0) - (b.p.price||0)); break;
+    case 'price-desc': withIdx.sort((a,b)=> (b.p.price||0) - (a.p.price||0)); break;
+    default: withIdx.sort((a,b)=> a.idx - b.idx);
+  }
+  return withIdx.map(x=>x.p);
 }
 function renderGrid(){
   const grid = document.getElementById('productGrid');
@@ -615,34 +498,32 @@ function renderGrid(){
   const items = getFiltered();
   document.getElementById('shopCount').textContent = items.length + ' item' + (items.length===1?'':'s');
   if(items.length === 0){
-    grid.innerHTML = '<div class="empty-msg">No pieces match &mdash; try another search or category.</div>';
-    document.getElementById('loadMoreWrap').style.display = 'none';
+    grid.innerHTML = '<div class="col-span-full text-center py-16 px-5 text-ink2 dark:text-bone/50 font-serif italic text-xl">No pieces match &mdash; try another search or filter.</div>';
+    document.getElementById('loadMoreWrap').classList.add('hidden');
     return;
   }
   const shown = items.slice(0, visibleCount);
-  shown.forEach((p, idx)=>{
+  shown.forEach(p=>{
     const globalIdx = PRODUCTS.indexOf(p);
-    const isNew = (globalIdx % 15) < 2; // sprinkle "new" tags
+    const isNew = (globalIdx % 15) < 2;
     const card = document.createElement('div');
-    card.className = 'card';
+    card.className = 'card bg-paper dark:bg-charcoal relative cursor-pointer border border-line dark:border-white/10 rounded-lg overflow-hidden hover:shadow-soft hover:-translate-y-1 transition-all duration-300';
     card.innerHTML = `
-      <div class="card-img">
-        <span class="tag">${p.id}</span>
-        ${isNew ? '<span class="tag-new">New</span>' : ''}
-        <img src="${p.image}" alt="${p.name}" loading="lazy">
-        <div class="quick-view">Quick View</div>
+      <div class="card-img-wrap aspect-[4/5] overflow-hidden bg-mist dark:bg-black/20 relative">
+        ${isNew ? '<span class="absolute top-2.5 left-2.5 bg-gold text-ink text-[9.5px] tracking-[1.5px] px-2.5 py-1 uppercase font-bold rounded-sm z-10">New</span>' : ''}
+        <img src="${p.image}" alt="${p.name}" loading="lazy" class="w-full h-full object-cover">
+        <div class="quick-view-strip absolute bottom-0 left-0 right-0 bg-ink/90 text-bone text-center py-2.5 text-[11px] tracking-[2px] uppercase">Quick View</div>
       </div>
-      <div class="card-body">
-        <div class="card-cat">${CATEGORY_LABELS[p.category] || p.category}</div>
-        <div class="card-name">${p.name}</div>
-        <div class="card-foot">
-          <span class="price">${p.price > 0 ? '&#8358;' + p.price.toLocaleString() : 'DM for price'}</span>
-          <button class="add-btn" aria-label="Add to bag" data-id="${p.id}">+</button>
+      <div class="p-3.5 md:p-4">
+        <div class="text-[10px] tracking-[1.5px] uppercase text-gold mb-1.5">${CATEGORY_LABELS[p.category] || p.category}</div>
+        <div class="font-semibold text-sm md:text-[15px] mb-2 leading-tight line-clamp-2">${p.name}</div>
+        <div class="flex items-center justify-between">
+          <span class="text-sm font-bold tracking-wide">${p.price > 0 ? '&#8358;' + p.price.toLocaleString() : 'DM for price'}</span>
+          <button class="add-btn border border-ink dark:border-bone hover:bg-ink hover:text-bone dark:hover:bg-gold dark:hover:text-ink dark:hover:border-gold w-8 h-8 rounded-full text-base flex items-center justify-center transition-colors" data-id="${p.id}">+</button>
         </div>
       </div>
     `;
-    card.querySelector('.card-img').onclick = ()=> openQuickView(p.id);
-    card.querySelector('.card-name').onclick = ()=> openQuickView(p.id);
+    card.querySelector('.card-img-wrap').onclick = ()=> openQuickView(p.id);
     grid.appendChild(card);
   });
   grid.querySelectorAll('.add-btn').forEach(btn=>{
@@ -653,7 +534,7 @@ function renderGrid(){
       setTimeout(()=> btn.textContent = '+', 700);
     };
   });
-  document.getElementById('loadMoreWrap').style.display = items.length > visibleCount ? 'block' : 'none';
+  document.getElementById('loadMoreWrap').classList.toggle('hidden', items.length <= visibleCount);
 }
 document.getElementById('loadMoreBtn').onclick = ()=>{ visibleCount += 12; renderGrid(); };
 
@@ -669,26 +550,31 @@ const descPool = [
 function openQuickView(id){
   const p = PRODUCTS.find(x=>x.id===id);
   const desc = descPool[Math.abs(id.charCodeAt(2)+id.length) % descPool.length];
+  const waMsg = encodeURIComponent(`Hi Bliss Bee! I'm interested in ${p.name} (${p.id}). Is it available?`);
   qvModal.innerHTML = `
-    <button class="qv-close" id="qvClose">&times;</button>
-    <img src="${p.image}" alt="${p.name}">
-    <div class="qv-info">
-      <div class="qv-cat">${CATEGORY_LABELS[p.category]}</div>
-      <div class="qv-name">${p.name}</div>
-      <div class="qv-price">${p.price>0 ? '&#8358;'+p.price.toLocaleString() : 'DM for price'}</div>
-      <div class="qv-id">Ref: ${p.id}</div>
-      <p class="qv-desc">${desc}</p>
-      <div class="qv-actions">
-        <button class="btn btn-gold" id="qvAdd">Add to Bag</button>
-        <a href="https://wa.me/${WHATSAPP_NUMBER}?text=Hi%20Bliss%20Bee!%20I'm%20interested%20in%20${encodeURIComponent(p.name)}%20(${p.id}).%20Is%20it%20available%3F" target="_blank" class="btn btn-ghost">Ask on WhatsApp</a>
+    <button class="absolute top-4 right-4 bg-ink/80 text-bone border-none w-8.5 h-8.5 rounded-full text-xl cursor-pointer z-10" id="qvClose">&times;</button>
+    <img src="${p.image}" alt="${p.name}" class="w-full h-full object-cover min-h-[240px] md:min-h-[320px]">
+    <div class="p-8 md:p-9 flex flex-col">
+      <div class="text-[11px] tracking-[2px] uppercase text-gold mb-2.5">${CATEGORY_LABELS[p.category]}</div>
+      <div class="font-serif font-bold italic text-3xl mb-3.5 leading-tight">${p.name}</div>
+      <div class="text-xl font-bold mb-5">${p.price>0 ? '&#8358;'+p.price.toLocaleString() : 'DM for price'}</div>
+      <div class="text-xs text-ink2 dark:text-bone/40 mb-5">Ref: ${p.id}</div>
+      <p class="text-sm leading-[1.8] text-ink2 dark:text-bone/60 mb-7">${desc}</p>
+      <div class="flex gap-3 mt-auto">
+        <button id="qvAdd" class="flex-1 justify-center inline-flex items-center gap-2.5 px-6 py-3.5 text-[12.5px] tracking-[2px] uppercase rounded-full bg-gold border border-gold text-ink font-bold hover:bg-goldbright transition-colors">Add to Bag</button>
+        <a href="https://wa.me/${WHATSAPP_NUMBER}?text=${waMsg}" target="_blank" class="flex-1 justify-center inline-flex items-center gap-2.5 px-6 py-3.5 text-[12.5px] tracking-[2px] uppercase rounded-full border border-ink dark:border-bone text-ink dark:text-bone hover:border-gold hover:text-gold transition-colors">Ask on WhatsApp</a>
       </div>
     </div>
   `;
   document.getElementById('qvClose').onclick = closeQuickView;
   document.getElementById('qvAdd').onclick = ()=>{ addToCart(p.id); closeQuickView(); openCart(); };
-  qvOverlay.classList.add('show');
+  qvOverlay.classList.remove('opacity-0','pointer-events-none');
+  qvModal.classList.remove('scale-95'); qvModal.classList.add('scale-100');
 }
-function closeQuickView(){ qvOverlay.classList.remove('show'); }
+function closeQuickView(){
+  qvOverlay.classList.add('opacity-0','pointer-events-none');
+  qvModal.classList.add('scale-95'); qvModal.classList.remove('scale-100');
+}
 qvOverlay.onclick = (e)=>{ if(e.target===qvOverlay) closeQuickView(); };
 
 // ---------- cart ----------
@@ -710,25 +596,27 @@ function renderCart(){
   const body = document.getElementById('cartBody');
   const foot = document.getElementById('cartFoot');
   if(cart.length===0){
-    body.innerHTML = '<div class="drawer-empty"><p>Your bag is empty</p><span>Add a few pieces to get started.</span></div>';
-    foot.style.display = 'none'; return;
+    body.innerHTML = '<div class="py-16 px-2.5 text-center text-ink2 dark:text-bone/50"><p class="font-serif italic text-xl mb-2">Your bag is empty</p><span>Add a few pieces to get started.</span></div>';
+    foot.classList.add('hidden'); return;
   }
-  foot.style.display = 'block'; body.innerHTML = ''; let total = 0;
+  foot.classList.remove('hidden'); body.innerHTML = ''; let total = 0;
   cart.forEach(c=>{
     const p = PRODUCTS.find(x=>x.id===c.id);
     total += (p.price||0) * c.qty;
     const row = document.createElement('div');
-    row.className = 'cart-item';
+    row.className = 'flex gap-3.5 py-4 border-b border-line dark:border-white/10';
     row.innerHTML = `
-      <img src="${p.image}" alt="${p.name}">
-      <div class="ci-info">
-        <div class="ci-cat">${CATEGORY_LABELS[p.category]}</div>
-        <b>${p.name}</b>
-        <span>${p.price>0 ? '&#8358;'+p.price.toLocaleString() : 'Price on request'}</span>
-        <div class="qty-row">
-          <button data-act="dec" data-id="${p.id}">&minus;</button><span>${c.qty}</span><button data-act="inc" data-id="${p.id}">+</button>
+      <img src="${p.image}" alt="${p.name}" class="w-[70px] h-[88px] object-cover flex-none rounded">
+      <div class="flex-1 flex flex-col gap-1.5">
+        <div class="text-[10px] tracking-[1.5px] uppercase text-gold">${CATEGORY_LABELS[p.category]}</div>
+        <b class="text-base">${p.name}</b>
+        <span class="text-sm">${p.price>0 ? '&#8358;'+p.price.toLocaleString() : 'Price on request'}</span>
+        <div class="flex items-center gap-2.5 mt-1">
+          <button data-act="dec" data-id="${p.id}" class="w-6 h-6 border border-line dark:border-white/20 rounded-full text-sm">&minus;</button>
+          <span>${c.qty}</span>
+          <button data-act="inc" data-id="${p.id}" class="w-6 h-6 border border-line dark:border-white/20 rounded-full text-sm">+</button>
         </div>
-        <span class="remove-link" data-remove="${p.id}">Remove</span>
+        <span class="remove-link text-[11px] underline text-ink2 dark:text-bone/40 cursor-pointer mt-1.5" data-remove="${p.id}">Remove</span>
       </div>`;
     body.appendChild(row);
   });
@@ -740,8 +628,14 @@ function renderCart(){
 
 const overlay = document.getElementById('overlay');
 const drawer = document.getElementById('cartDrawer');
-function openCart(){ overlay.classList.add('show'); drawer.classList.add('show'); }
-function closeCart(){ overlay.classList.remove('show'); drawer.classList.remove('show'); }
+function openCart(){
+  overlay.classList.remove('opacity-0','pointer-events-none');
+  drawer.classList.remove('translate-x-full');
+}
+function closeCart(){
+  overlay.classList.add('opacity-0','pointer-events-none');
+  drawer.classList.add('translate-x-full');
+}
 document.getElementById('cartOpenBtn').onclick = openCart;
 document.getElementById('cartCloseBtn').onclick = closeCart;
 overlay.onclick = closeCart;
@@ -768,32 +662,69 @@ const testimonials = [
 const testGrid = document.getElementById('testGrid');
 testimonials.forEach(t=>{
   const card = document.createElement('div');
-  card.className = 'test-card reveal';
+  card.className = 'bg-paper dark:bg-ink rounded-lg p-8 border border-line dark:border-white/10';
   card.innerHTML = `
-    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-    <p>"${t.quote}"</p>
-    <div class="test-who">
-      <div class="test-avatar">${t.name.charAt(0)}</div>
-      <div><b>${t.name}</b><span>${t.loc}</span></div>
+    <div class="text-gold text-[15px] tracking-[3px] mb-4">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+    <p class="font-serif italic text-lg leading-relaxed mb-4.5">"${t.quote}"</p>
+    <div class="flex items-center gap-3">
+      <div class="w-9.5 h-9.5 rounded-full bg-ink dark:bg-gold text-gold dark:text-ink flex items-center justify-center font-serif font-bold text-[15px]">${t.name.charAt(0)}</div>
+      <div><b class="block text-[13.5px]">${t.name}</b><span class="text-[11px] text-ink2 dark:text-bone/40 uppercase tracking-wide">${t.loc}</span></div>
     </div>`;
   testGrid.appendChild(card);
 });
 
-document.getElementById('statProducts').textContent = PRODUCTS.length;
-document.getElementById('statProductsHero').textContent = PRODUCTS.length;
-document.getElementById('year').textContent = new Date().getFullYear();
+// ---------- faq ----------
+const faqs = [
+  {q:"How do I place an order?", a:"Browse the shop, add pieces to your bag, then hit checkout \u2014 it opens WhatsApp with your order already filled in. Just hit send."},
+  {q:"How do I pay?", a:"Payment is by bank transfer to our Moniepoint account. Details are sent once you confirm your order on WhatsApp."},
+  {q:"Do you deliver outside Uyo?", a:"Yes \u2014 message us your location on WhatsApp and we'll confirm delivery options and cost."},
+  {q:"Can I visit the store in person?", a:"Of course \u2014 we're at 88 Ekpri Nsukara Road, Uyo. Come through!"},
+];
+const faqList = document.getElementById('faqList');
+faqs.forEach((f,i)=>{
+  const item = document.createElement('div');
+  item.className = 'border border-line dark:border-white/10 rounded-lg overflow-hidden bg-paper dark:bg-ink';
+  item.innerHTML = `
+    <button class="faq-q w-full flex items-center justify-between text-left px-5 py-4 font-semibold text-sm">
+      ${f.q}
+      <span class="faq-icon text-gold text-lg transition-transform duration-200">+</span>
+    </button>
+    <div class="faq-a max-h-0 overflow-hidden transition-all duration-300">
+      <p class="px-5 pb-4 text-sm text-ink2 dark:text-bone/60 leading-relaxed">${f.a}</p>
+    </div>
+  `;
+  const btn = item.querySelector('.faq-q');
+  const a = item.querySelector('.faq-a');
+  const icon = item.querySelector('.faq-icon');
+  btn.onclick = ()=>{
+    const isOpen = a.style.maxHeight && a.style.maxHeight !== '0px';
+    document.querySelectorAll('.faq-a').forEach(el=> el.style.maxHeight = '0px');
+    document.querySelectorAll('.faq-icon').forEach(el=> el.style.transform = 'rotate(0deg)');
+    if(!isOpen){ a.style.maxHeight = a.scrollHeight + 'px'; icon.style.transform = 'rotate(45deg)'; }
+  };
+  faqList.appendChild(item);
+});
 
-// ---------- back to top ----------
+// ---------- init ----------
+document.getElementById('statProducts').textContent = PRODUCTS.length;
+document.getElementById('year').textContent = new Date().getFullYear();
+CATS.forEach(c=>{
+  const li = document.createElement('li');
+  const a = document.createElement('a');
+  a.href = '#shop'; a.className='hover:text-gold'; a.textContent = CATEGORY_LABELS[c] || c;
+  a.onclick = ()=> setCategories(new Set([c]));
+  li.appendChild(a); document.getElementById('footerCats').appendChild(li);
+});
+
 const toTop = document.getElementById('toTop');
-window.addEventListener('scroll', ()=>{ toTop.classList.toggle('show', window.scrollY > 700); });
+window.addEventListener('scroll', ()=>{
+  const show = window.scrollY > 700;
+  toTop.classList.toggle('opacity-0', !show);
+  toTop.classList.toggle('pointer-events-none', !show);
+});
 toTop.onclick = ()=> window.scrollTo({top:0, behavior:'smooth'});
 
-// ---------- scroll reveal ----------
-const io = new IntersectionObserver((entries)=>{
-  entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
-}, {threshold:0.15});
-document.querySelectorAll('.reveal').forEach(el=> io.observe(el));
-
+buildCatNav(); buildTabs(); buildIconRow(); buildFilterList();
 renderGrid();
 renderCart();
 </script>
